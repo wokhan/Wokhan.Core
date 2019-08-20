@@ -13,7 +13,6 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Wokhan.Core\Wokhan.Core.csproj" />
-    <ProjectReference Include="..\Wokhan.Extensions\Wokhan.Extensions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,9 +4,5 @@
     <Authors>Wokhan Solutions</Authors>
     <Description>Main .NET Standard library with various helpers and functionality.</Description>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Wokhan.Extensions\Wokhan.Extensions.csproj" />
-  </ItemGroup>
 
 </Project>
