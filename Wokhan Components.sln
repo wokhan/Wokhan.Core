@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Extensions", "Wokhan.Extensions\Wokhan.Extensions.csproj", "{08532A48-DC9E-4934-A19B-55D734F9BFFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Core", "Wokhan.Core\Wokhan.Core.csproj", "{2DBD8055-FA34-47F1-A26D-2D61F43F656B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E6AA8C54-02E4-453A-A0B8-27CB296105AF}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.UWP", "Wokhan.Core.UWP\Wokhan.UWP.csproj", "{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Wokhan.UI.Shared", "Wokhan.UI.Shared\Wokhan.UI.Shared.shproj", "{4F5FD240-F312-4BDD-B1E2-10CE168190A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wokhan.UI.WPF", "Wokhan.UI.WPF\Wokhan.UI.WPF.csproj", "{73AA94DC-8D76-462E-A9D2-8694B91AE01A}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Wokhan.UI.Shared\Wokhan.UI.Shared.projitems*{4f5fd240-f312-4bdd-b1e2-10ce168190a4}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08532A48-DC9E-4934-A19B-55D734F9BFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08532A48-DC9E-4934-A19B-55D734F9BFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08532A48-DC9E-4934-A19B-55D734F9BFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08532A48-DC9E-4934-A19B-55D734F9BFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73AA94DC-8D76-462E-A9D2-8694B91AE01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73AA94DC-8D76-462E-A9D2-8694B91AE01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73AA94DC-8D76-462E-A9D2-8694B91AE01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73AA94DC-8D76-462E-A9D2-8694B91AE01A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D334587F-E0DB-4E07-ADB3-D5A01A6EB16C}
+	EndGlobalSection
+EndGlobal
