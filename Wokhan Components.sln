@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.UWP", "Wokhan.Core.UWP\Wokhan.UWP.csproj", "{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.UWP", "Wokhan.UWP\Wokhan.UWP.csproj", "{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Wokhan.UI.Shared", "Wokhan.UI.Shared\Wokhan.UI.Shared.shproj", "{4F5FD240-F312-4BDD-B1E2-10CE168190A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.UI.WPF", "Wokhan.UI.WPF\Wokhan.UI.WPF.csproj", "{73AA94DC-8D76-462E-A9D2-8694B91AE01A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.WPF", "Wokhan.WPF\Wokhan.WPF.csproj", "{73AA94DC-8D76-462E-A9D2-8694B91AE01A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Extensions", "Wokhan.Extensions\Wokhan.Extensions.csproj", "{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}"
 EndProject
