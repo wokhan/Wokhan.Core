@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Threading;
 using Wokhan.Linq.Extensions;
 
-namespace Wokhan.Collections.Extensions
+namespace Wokhan.Collections.Generic.Extensions
 {
     public static class EnumerableExtensions
     {

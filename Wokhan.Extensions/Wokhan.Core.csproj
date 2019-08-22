@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <Authors>Wokhan Solutions</Authors>
-    <Description>.NET Standard extensions by Wokhan Solutions.</Description>
+    <Description>.NET Standard 2.0 / Core 3.0 extensions and useful classes by Wokhan Solutions.</Description>
   </PropertyGroup>
 
   <ItemGroup>

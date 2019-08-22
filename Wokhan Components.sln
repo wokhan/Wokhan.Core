@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Core", "Wokhan.Core\Wokhan.Core.csproj", "{2DBD8055-FA34-47F1-A26D-2D61F43F656B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E6AA8C54-02E4-453A-A0B8-27CB296105AF}"
 	ProjectSection(SolutionItems) = preProject
 		Wokhan.Extensions\.gitignore = Wokhan.Extensions\.gitignore
@@ -17,7 +15,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Wokhan.UI.Shared", "Wokhan.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.WPF", "Wokhan.WPF\Wokhan.WPF.csproj", "{73AA94DC-8D76-462E-A9D2-8694B91AE01A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Extensions", "Wokhan.Extensions\Wokhan.Extensions.csproj", "{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Core", "Wokhan.Extensions\Wokhan.Core.csproj", "{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -28,10 +26,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DBD8055-FA34-47F1-A26D-2D61F43F656B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D52AE7-0DE0-45D1-9034-1D2BAA8D3F32}.Release|Any CPU.ActiveCfg = Release|Any CPU

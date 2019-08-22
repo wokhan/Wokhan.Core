@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using Wokhan.Collections.Generic.Extensions;
 using Wokhan.ComponentModel.Extensions;
 
-namespace Wokhan.Core.Collections
+namespace Wokhan.Collections
 {
     public class GroupedObservableCollection<TK, T> : ObservableCollection<ObservableGrouping<TK, T>>, INotifyPropertyChanged
     {
