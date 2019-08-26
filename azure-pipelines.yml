@@ -1,0 +1,20 @@
+pool:
+  name: Hosted Windows 2019 with VS2019
+steps:
+- task: DotNetCoreInstaller@0
+  displayName: 'Use .NET Core sdk 2.2.105'
+  inputs:
+    version: 2.2.105
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack'
+  inputs:
+    command: pack
+    versioningScheme: byBuildNumber
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet push'
+  inputs:
+    command: push
+    publishVstsFeed: '2aba0c96-de39-4bd4-98fe-f9695115a49e'
+
