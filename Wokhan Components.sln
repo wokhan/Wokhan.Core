@@ -15,7 +15,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Wokhan.UI.Shared", "Wokhan.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.WPF", "Wokhan.WPF\Wokhan.WPF.csproj", "{73AA94DC-8D76-462E-A9D2-8694B91AE01A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Core", "Wokhan.Extensions\Wokhan.Core.csproj", "{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Core", "Wokhan.Core\Wokhan.Core.csproj", "{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
