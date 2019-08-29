@@ -270,12 +270,12 @@ namespace Wokhan.Collections.Generic.Extensions
             return trg;
         }
 
-        public static T ToObject<T>(this IList o, string[] attributes) where T : new()
+        public static T ToObject<T>(this IList o, string[] attributes)
         {
             return (T)ToObject(o, typeof(T), attributes);
         }
 
-        public static T ToObject<T>(this IEnumerable src, string[] attributes) where T : new()
+        public static T ToObject<T>(this IEnumerable src, string[] attributes) 
         {
             return (T)ToObject(src.Cast<object>().ToArray(), typeof(T), attributes);
         }
