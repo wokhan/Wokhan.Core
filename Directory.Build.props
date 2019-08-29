@@ -1,0 +1,5 @@
+<Project>
+ <PropertyGroup>
+   <JavaSdkDirectory Condition="'$(JavaSdkDirectory)'=='' and '$(JAVA_HOME_8_X64)'!=''">$(JAVA_HOME_8_X64)</JavaSdkDirectory>
+ </PropertyGroup>
+</Project>
