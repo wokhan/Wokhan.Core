@@ -44,7 +44,7 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IEnumerable<object[]> AsObjectCollection(this IEnumerable src, params string[] attributes)
         {
-            return AsObjectCollection<object>(src.Cast<object>(), attributes);
+            return AsObjectCollection(src.Cast<object>(), attributes);
         }
 
         public static IEnumerable<object[]> AsObjectCollection<T>(this IEnumerable<T> src, params string[] attributes)
@@ -248,28 +248,39 @@ namespace Wokhan.Collections.Generic.Extensions
         }
 
 
-        public static dynamic ToObject(this object[] o, Type targetclass, string[] attributes)
+        public static object ToObject(this IList o, Type targetclass, string[] attributes)
         {
             var trg = Activator.CreateInstance(targetclass);
 
             var pr = attributes.Join(targetclass.GetProperties(), a => a, b => b.Name, (a, b) => b).ToList();
+            if (o.Count < pr.Count)
+            {
+                throw new ArgumentOutOfRangeException("Source has fewer values than expected");
+            }
+
             for (int i = 0; i < pr.Count; i++)
             {
-                if (o[i] != DBNull.Value && o[i] != null)
+                var value = o[i];
+                if (value != null && !DBNull.Value.Equals(value))
                 {
-                    pr[i].SetValue(trg, o[i]);
+                    pr[i].SetValue(trg, value);
                 }
             }
 
-            return Convert.ChangeType(trg, targetclass);
+            return trg;
         }
 
-        /*public static T ToObject<T>(this object[] o, string[] attributes)
+        public static T ToObject<T>(this IList o, string[] attributes) where T : new()
         {
-            return ToObject(o, typeof(T), attributes);
-        }*/
+            return (T)ToObject(o, typeof(T), attributes);
+        }
 
-        public static T ToObject<T>(this string[] o, string[] attributes)
+        public static T ToObject<T>(this IEnumerable src, string[] attributes) where T : new()
+        {
+            return (T)ToObject(src.Cast<object>().ToArray(), typeof(T), attributes);
+        }
+
+        /*public static T ToObject<T>(this string[] o, string[] attributes) where T : new()
         {
             var trg = (T)Activator.CreateInstance(typeof(T));
 
@@ -280,7 +291,7 @@ namespace Wokhan.Collections.Generic.Extensions
             }
 
             return trg;
-        }
+        }*/
 
         static Action<string, double, double> defaultCallback = (message, value, max) => Console.WriteLine($"{value}/{max} - {message}");
 
