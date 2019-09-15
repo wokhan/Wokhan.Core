@@ -129,11 +129,11 @@ namespace Wokhan.Collections.Generic.Extensions
             var param = ParameterExpression.Parameter(typeof(T));
 
             var initSorter = Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, sorters.First().Trim('-')), param);
-            var ret = sorters.First().EndsWith('-') ? src.OrderByDescending(initSorter) : src.OrderBy(initSorter);
+            var ret = sorters.First().EndsWith("-") ? src.OrderByDescending(initSorter) : src.OrderBy(initSorter);
             foreach (var attr in sorters.Skip(1))
             {
                 var sorter = Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, attr.Trim('-')), param);
-                ret = attr.EndsWith('-') ? ret.ThenByDescending(sorter) : ret.ThenBy(sorter);
+                ret = attr.EndsWith("-") ? ret.ThenByDescending(sorter) : ret.ThenBy(sorter);
             }
 
             return ret;
