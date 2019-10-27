@@ -19,6 +19,12 @@ namespace Wokhan.Core.Extensions
             {
                 return null;
             }
+
+            if (path == ".") 
+            {
+                return obj;
+            }
+            
             Type type = obj.GetType();
             var props = path.Split('.');
             var o = obj;
