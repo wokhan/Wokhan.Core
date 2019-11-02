@@ -38,7 +38,7 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IQueryable<TResult> Select<TResult>(this IQueryable source, IEnumerable<string> selectors)
         {
-            return source.Select<TResult>(String.Join(",", selectors));
+            return source.Select<TResult>($"new({string.Join(",", selectors)})");
         }
 
 
