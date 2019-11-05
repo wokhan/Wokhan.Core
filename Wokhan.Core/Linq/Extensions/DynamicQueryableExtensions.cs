@@ -9,17 +9,17 @@ namespace Wokhan.Linq.Extensions
     {
         public static IOrderedQueryable<T> OrderByMany<T>(this IQueryable<T> src, IEnumerable<string> sorters)
         {
-            var initSorter = sorters.First().Trim("-");
+            var initSorter = sorters.First().Trim('-');
 
-            var ret = sorters.First().EndsWith("-") ? src.OrderBy(initSorter + " descending") : src.OrderBy(initSorter);
+            var ret = sorters.First().EndsWith('-') ? src.OrderBy(initSorter + " descending") : src.OrderBy(initSorter);
             foreach (var attr in sorters.Skip(1))
             {
-                ret = ret.ThenBy(attr.EndsWith("-") ? attr.Trim("-") + " descending" : attr);
+                ret = ret.ThenBy(attr.EndsWith('-') ? attr.Trim('-') + " descending" : attr);
             }
 
             return ret;
         }
-
+        
         public static IQueryable AggregateBy(this IQueryable src, IList<string> members, IDictionary<string, string> aggregateOperation)
         {
             if (members.Any() && aggregateOperation.Any())
