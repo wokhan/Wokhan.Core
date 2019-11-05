@@ -9,9 +9,8 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IEnumerable<TValue> GetValuesOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> src, params TKey[] keys)
         {
-            return keys.Select(key => src.GetValueOrDefault(key));
+            return keys.Select(key => src.TryGetValue(key, out TValue val) ? val : default(TValue));
         }
-        
 
         public static IEnumerable<KeyValuePair<object, object>> Flatten(this IEnumerable<KeyValuePair<object, object>> d, string parentKey = "")
         {
