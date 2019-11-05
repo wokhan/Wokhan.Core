@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Wokhan.Core.Extensions
+namespace Wokhan.System.Extensions
 {
     public static class StringExtensions
     {
