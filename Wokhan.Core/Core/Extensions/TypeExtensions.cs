@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Wokhan.Core.Extensions
+namespace Wokhan.System.Extensions
 {
     public static class TypeExtensions
     {
