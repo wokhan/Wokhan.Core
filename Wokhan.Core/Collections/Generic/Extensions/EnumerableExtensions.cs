@@ -16,6 +16,11 @@ namespace Wokhan.Collections.Generic.Extensions
 {
     public static class EnumerableExtensions
     {
+        public static IEnumerable<T> ApplyToAll<T>(this IEnumerable<T> src, Action<T> action)
+        {
+            return src.Select(_ => { action(_); return _; });
+        }
+
         public static int GreatestCommonDiv(this IEnumerable<int> src)
         {
             return src.OrderBy(a => a).Aggregate((a, b) => GreatestCommonDiv(a, b));
