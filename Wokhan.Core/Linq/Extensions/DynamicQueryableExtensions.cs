@@ -12,10 +12,10 @@ namespace Wokhan.Linq.Extensions
             var descMarkers = new [] { '-' };
             var initSorter = sorters.First().Trim(descMarkers);
 
-            var ret = sorters.First().EndsWith(descMarkers) ? src.OrderBy(initSorter + " descending") : src.OrderBy(initSorter);
+            var ret = sorters.First().EndsWith("-") ? src.OrderBy(initSorter + " descending") : src.OrderBy(initSorter);
             foreach (var attr in sorters.Skip(1))
             {
-                ret = ret.ThenBy(attr.EndsWith(descMarkers) ? attr.Trim(descMarkers) + " descending" : attr);
+                ret = ret.ThenBy(attr.EndsWith("-") ? attr.Trim(descMarkers) + " descending" : attr);
             }
 
             return ret;
