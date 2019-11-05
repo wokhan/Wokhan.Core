@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <!--PackageReference Include="Microsoft.CSharp" Version="4.6.0" /-->
-    <PackageReference Include="Microsoft.NETCore.App" Version="2.2.7" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.19" />
   </ItemGroup>
 
