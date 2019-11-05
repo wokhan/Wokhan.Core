@@ -9,13 +9,12 @@ namespace Wokhan.Linq.Extensions
     {
         public static IOrderedQueryable<T> OrderByMany<T>(this IQueryable<T> src, IEnumerable<string> sorters)
         {
-            var descMarkers = new [] { '-' };
-            var initSorter = sorters.First().Trim(descMarkers);
+            var initSorter = sorters.First().Trim('-');
 
             var ret = sorters.First().EndsWith("-") ? src.OrderBy(initSorter + " descending") : src.OrderBy(initSorter);
             foreach (var attr in sorters.Skip(1))
             {
-                ret = ret.ThenBy(attr.EndsWith("-") ? attr.Trim(descMarkers) + " descending" : attr);
+                ret = ret.ThenBy(attr.EndsWith("-") ? attr.Trim('-') + " descending" : attr);
             }
 
             return ret;
