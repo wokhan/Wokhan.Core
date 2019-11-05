@@ -6,6 +6,13 @@ namespace Wokhan.Collections.Generic.Extensions
 {
     public static class DictionaryExtensions
     {
+
+        public static IEnumerable<TValue> GetValuesOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> src, params TKey[] keys)
+        {
+            return keys.Select(key => src.GetValueOrDefault(key));
+        }
+        
+
         public static IEnumerable<KeyValuePair<object, object>> Flatten(this IEnumerable<KeyValuePair<object, object>> d, string parentKey = "")
         {
             if (d != null)
