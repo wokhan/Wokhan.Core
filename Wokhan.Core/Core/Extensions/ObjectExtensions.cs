@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
-namespace Wokhan.System.Extensions
+namespace Wokhan.Core.Extensions
 {
     public static class ObjectExtensions
     {
