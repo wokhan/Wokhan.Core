@@ -1,5 +1,4 @@
-﻿using Microsoft.CSharp.RuntimeBinder;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -79,9 +78,9 @@ namespace Wokhan.Collections.Generic.Extensions
 
                 var casted = Expression.Convert(param, innertype);
 
-                Func<string, Expression> propertyGet;
+                Func<string, Expression> propertyGet = a => Expression.Property(casted, a);
                 // Assuming dynamic...
-                if (innertype == typeof(object))
+                /*if (innertype == typeof(object))
                 {
 
                     propertyGet = a =>
@@ -93,7 +92,7 @@ namespace Wokhan.Collections.Generic.Extensions
                 else
                 {
                     propertyGet = a => Expression.Property(casted, a);
-                }
+                }*/
                 var atrs = attributes.Select(a =>
                     Expression.TryCatch(
                         Expression.Block(
