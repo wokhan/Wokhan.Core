@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CSharp.RuntimeBinder;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,6 +39,11 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IQueryable<TResult> Select<TResult>(this IQueryable source, IEnumerable<string> selectors)
         {
+            if (typeof(TResult) == typeof(object))
+            {
+                //var config = new ParsingConfig() { UseDynamicObjectClassForAnonymousTypes = true };
+                return source.Select($"new({string.Join(",", selectors)})").Cast<TResult>();
+            }
             return source.Select<TResult>($"new({string.Join(",", selectors)})");
         }
 
@@ -68,10 +74,25 @@ namespace Wokhan.Collections.Generic.Extensions
 
                 var casted = Expression.Convert(param, innertype);
 
+                Func<string, Expression> propertyGet;
+                // Assuming dynamic...
+                if (innertype == typeof(object))
+                {
+
+                    propertyGet = a =>
+                    {
+                        var binder = Microsoft.CSharp.RuntimeBinder.Binder.GetMember(CSharpBinderFlags.None, a, innertype, new[] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) });
+                        return Expression.Dynamic(binder, innertype, casted);
+                    };
+                }
+                else
+                {
+                    propertyGet = a => Expression.Property(casted, a);
+                }
                 var atrs = attributes.Select(a =>
                     Expression.TryCatch(
                         Expression.Block(
-                            Expression.Convert(Expression.Property(casted, a), typeof(object))
+                            Expression.Convert(propertyGet(a), typeof(object))
                         ),
                     Expression.Catch(expa,
                         Expression.Block(
@@ -111,7 +132,6 @@ namespace Wokhan.Collections.Generic.Extensions
             return src.GetType().GenericTypeArguments.FirstOrDefault();
         }
 
-
         public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> obj, int[] indexes)
         {
             IOrderedEnumerable<T[]> ret = obj.OrderBy(a => a.Length > 0 ? a[indexes[0]] : default(T));
@@ -139,21 +159,22 @@ namespace Wokhan.Collections.Generic.Extensions
             return ret;
         }
 
-        public static IOrderedQueryable<dynamic> OrderByMany<T>(this IQueryable<T> src, Dictionary<string, Type> attributes)
+        [Obsolete("Use DynamicQueryableExtensions from System.Linq.Dynamic package instead")]
+        public static IOrderedQueryable<dynamic> OrderByMany(this IQueryable src, params string[] attributes)
         {
             var innertype = src.GetInnerType();
-            var m = typeof(EnumerableExtensions).GetMethod("OrderByManyTyped").MakeGenericMethod(innertype);
+            var m = typeof(EnumerableExtensions).GetMethod(nameof(OrderByManyTyped)).MakeGenericMethod(innertype);
             return (IOrderedQueryable<dynamic>)m.Invoke(null, new object[] { src, attributes });
         }
 
-        public static IOrderedQueryable<T> OrderByManyTyped<T>(IQueryable<T> src, Dictionary<string, Type> attributes)
+        public static IOrderedQueryable<T> OrderByManyTyped<T>(IQueryable<T> src, params string[] attributes)
         {
-            var param = ParameterExpression.Parameter(typeof(T));
+            var param = Expression.Parameter(typeof(T));
 
-            var ret = src.OrderBy(Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, attributes.First().Key), param));
+            var ret = src.OrderBy(Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, attributes.First()), param));
             foreach (var attr in attributes.Skip(1))
             {
-                ret = ret.ThenBy(Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, attr.Key), param));
+                ret = ret.ThenBy(Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, attr), param));
             }
 
             return ret;
@@ -171,7 +192,7 @@ namespace Wokhan.Collections.Generic.Extensions
             return ret;
         }
 
-
+        [Obsolete("Use DynamicQueryableExtensions from System.Linq.Dynamic package instead")]
         public static IOrderedQueryable<T[]> OrderByMany<T>(this IQueryable<T[]> obj, int columnsToTake, int columnsToSkip = 0)
         {
             IOrderedQueryable<T[]> ret = obj.OrderBy(a => a.Length > columnsToSkip ? a[columnsToSkip] : default(T));
@@ -201,10 +222,10 @@ namespace Wokhan.Collections.Generic.Extensions
             return ret;
         }
 
-        public static IOrderedQueryable<dynamic> OrderByAll<T>(this IQueryable<T> src)
+        public static IOrderedQueryable<dynamic> OrderByAll(this IQueryable src)
         {
             var innertype = src.GetInnerType();
-            var m = typeof(EnumerableExtensions).GetMethod("OrderByAllTyped").MakeGenericMethod(innertype);
+            var m = typeof(EnumerableExtensions).GetMethod(nameof(OrderByAllTyped)).MakeGenericMethod(innertype);
             return (IOrderedQueryable<dynamic>)m.Invoke(null, new object[] { src, 0 });
         }
 
@@ -290,7 +311,7 @@ namespace Wokhan.Collections.Generic.Extensions
             return (T)ToObject(o, typeof(T), attributes);
         }
 
-        public static T ToObject<T>(this IEnumerable src, string[] attributes) 
+        public static T ToObject<T>(this IEnumerable src, string[] attributes)
         {
             return (T)ToObject(src.Cast<object>().ToArray(), typeof(T), attributes);
         }
