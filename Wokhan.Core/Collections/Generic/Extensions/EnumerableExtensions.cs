@@ -376,7 +376,7 @@ namespace Wokhan.Collections.Generic.Extensions
             }
 
             var comparer = new GenericComparer<T, TK>(predicate);
-            return source.Where(_ => !added.Contains(_, comparer)).Concat(added);
+            return source.Except(added, comparer).Concat(added);
         }
 
         public static IEnumerable<T> WithProgress<T>(this IEnumerable<T> src, Action<double> callback)
