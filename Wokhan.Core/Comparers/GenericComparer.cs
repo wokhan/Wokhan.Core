@@ -1,7 +1,8 @@
- using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 
- namespace Wokhan.Core.Comparers 
- {
+namespace Wokhan.Core.Comparers 
+{
     public class GenericComparer<T, TK> : IEqualityComparer<T>
     {
         private Func<T, TK> keyGetter;
