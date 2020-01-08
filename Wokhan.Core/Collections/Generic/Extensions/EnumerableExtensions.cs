@@ -349,7 +349,7 @@ namespace Wokhan.Collections.Generic.Extensions
             });
         }
 
-        public static IEnumerable<T> Merge<T, TK>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, TK> predicate)
+        /* public static IEnumerable<T> Merge<T, TK>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, TK> predicate)
         {
             if (source == null)
             {
@@ -361,9 +361,9 @@ namespace Wokhan.Collections.Generic.Extensions
                 return source;
             }
 
-            var comparer = new GenericComparer<T, TK>(predicate);
+            var comparer = new GenericComparer<T>(predicate);
             return source.Except(added, comparer).Concat(added);
-        }
+        } */
 
         public static IEnumerable<T> WithProgress<T>(this IEnumerable<T> src, Action<double> callback)
         {
