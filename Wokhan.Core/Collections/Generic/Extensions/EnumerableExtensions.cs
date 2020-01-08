@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
 using Wokhan.Linq.Extensions;
+using Wokhan.Core.Comparers;
 
 namespace Wokhan.Collections.Generic.Extensions
 {
@@ -347,21 +348,6 @@ namespace Wokhan.Collections.Generic.Extensions
                 return x;
             });
         }
-
-        private class GenericComparer<T, TK> : IEqualityComparer<T>
-        {
-            private Func<T, TK> keyGetter;
-
-            public GenericComparer(Func<T, TK> keyGetter)
-            {
-                this.keyGetter = keyGetter;
-            }
-
-            public bool Equals(T x, T y) => keyGetter(x).Equals(keyGetter(y));
-
-            public int GetHashCode(T obj) => keyGetter(obj).GetHashCode();
-        }
-
 
         public static IEnumerable<T> Merge<T, TK>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, TK> predicate)
         {
