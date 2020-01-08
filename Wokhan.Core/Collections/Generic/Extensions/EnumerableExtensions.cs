@@ -354,7 +354,7 @@ namespace Wokhan.Collections.Generic.Extensions
             return source.Except(added, comparer).Concat(added);
         }
 
-        public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, TK> predicate)
+        public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, object> predicate)
         {
             if (source == null)
             {
