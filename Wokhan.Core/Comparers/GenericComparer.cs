@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Wokhan.Core.Comparers 
 {
-    public class GenericComparer<T> : IEqualityComparer<T>
+    public class GenericComparer<T> : EqualityComparer<T>
     {
         private Func<T, object> keyGetter;
 
         public GenericComparer(Func<T, object> keyGetter) => this.keyGetter = keyGetter;
-        public bool Equals(T x, T y) => keyGetter(x)?.Equals(keyGetter(y)) ?? false;
-        public int GetHashCode(T obj) => keyGetter(obj)?.GetHashCode() ?? 0;
+        public override bool Equals(T x, T y) => keyGetter(x)?.Equals(keyGetter(y)) ?? false;
+        public override int GetHashCode(T obj) => keyGetter(obj)?.GetHashCode() ?? 0;
     }
 }
