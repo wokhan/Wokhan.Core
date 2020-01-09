@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Threading;
 using Wokhan.Linq.Extensions;
 using Wokhan.Core.Comparers;
+using Wokhan.Core.Linq;
 
 namespace Wokhan.Collections.Generic.Extensions
 {
@@ -351,7 +352,9 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, IEqualityComparer<T> comparer) 
         {
-            return source.Except(added, comparer).Concat(added);
+            var targetSet = new Set<T>(comparer);
+            targetSet.UnionWith(added);
+            return source.Where(x => !targetSet.Contains(x, comparer)).Concat(added);
         }
 
         public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, object> predicate)
