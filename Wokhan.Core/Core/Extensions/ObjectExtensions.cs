@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
@@ -43,10 +44,7 @@ namespace Wokhan.Core.Extensions
 
         public static object SafeConvert(this object a, Type targetType)
         {
-            if (targetType == null)
-            {
-                throw new ArgumentNullException(nameof(targetType));
-            }
+            Contract.Requires(targetType != null);
 
             if (a is DBNull || a == null || (a is string && String.IsNullOrEmpty((string)a)))
             {

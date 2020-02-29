@@ -13,6 +13,7 @@ using System.Threading;
 using Wokhan.Linq.Extensions;
 using Wokhan.Core.Comparers;
 using Wokhan.Core.Linq;
+using System.Diagnostics.Contracts;
 
 namespace Wokhan.Collections.Generic.Extensions
 {
@@ -20,11 +21,29 @@ namespace Wokhan.Collections.Generic.Extensions
     {
         public static IEnumerable<T> ApplyToAll<T>(this IEnumerable<T> src, Action<T> action)
         {
+            Contract.Requires(src != null);
+            Contract.Requires(action != null);
+            
             return src.Select(_ => { action(_); return _; });
+        }
+
+        public static double AverageChecked<T>(this IEnumerable<T> src, bool ignoreErrors = false) where T : IConvertible
+        {
+            Contract.Requires(src != null);
+
+            var converter = new DoubleConverter();
+            var s = src;
+            if (ignoreErrors)
+            {
+                s = s.Where(c => converter.IsValid(c));
+            }
+            return src.Average(x => (double)converter.ConvertFrom(x));
         }
 
         public static int GreatestCommonDiv(this IEnumerable<int> src)
         {
+            Contract.Requires(src != null);
+
             return src.OrderBy(a => a).Aggregate((a, b) => GreatestCommonDiv(a, b));
         }
 
@@ -43,14 +62,16 @@ namespace Wokhan.Collections.Generic.Extensions
         }
 
 
-        public static IQueryable<TResult> Select<TResult>(this IQueryable source, IEnumerable<string> selectors)
+        public static IQueryable<TResult> Select<TResult>(this IQueryable src, IEnumerable<string> selectors)
         {
+            Contract.Requires(src != null);
+
             if (typeof(TResult) == typeof(object))
             {
                 //var config = new ParsingConfig() { UseDynamicObjectClassForAnonymousTypes = true };
-                return source.Select($"new({string.Join(",", selectors)})").Cast<TResult>();
+                return src.Select($"new({string.Join(",", selectors)})").Cast<TResult>();
             }
-            return source.Select<TResult>($"new({string.Join(",", selectors)})");
+            return src.Select<TResult>($"new({string.Join(",", selectors)})");
         }
 
 
@@ -61,6 +82,8 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IEnumerable<object[]> AsObjectCollection<T>(this IEnumerable<T> src, params string[] attributes)
         {
+            Contract.Requires(src != null);
+
             var innertype = src.GetInnerType();
             if (innertype.IsArray)
             {
@@ -108,7 +131,7 @@ namespace Wokhan.Collections.Generic.Extensions
 
                 var attrExpr = Expression.Lambda<Func<T, object[]>>(Expression.NewArrayInit(typeof(object), atrs), param).Compile();
 
-                return src.Select(x => { if (x == null) { throw new Exception("WTF????"); } return attrExpr(x); });
+                return src.Select(x => { if (x == null) { throw new Exception("Should never get there."); } return attrExpr(x); });
             }
         }
 
@@ -130,17 +153,24 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static Type GetInnerType<T>(this IEnumerable<T> src)
         {
+            Contract.Requires(src != null);
+
             return src.GetType().GenericTypeArguments.FirstOrDefault();
         }
 
         public static Type GetInnerType(this IEnumerable src)
         {
+            Contract.Requires(src != null);
+
             return src.GetType().GenericTypeArguments.FirstOrDefault();
         }
 
-        public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> obj, int[] indexes)
+        public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> src, int[] indexes)
         {
-            IOrderedEnumerable<T[]> ret = obj.OrderBy(a => a.Length > 0 ? a[indexes[0]] : default(T));
+            Contract.Requires(src != null);
+            Contract.Requires(indexes != null);
+
+            IOrderedEnumerable<T[]> ret = src.OrderBy(a => a.Length > 0 ? a[indexes[0]] : default(T));
             for (int i = 1; i < indexes.Length; i++)
             {
                 var ic = i;
@@ -152,6 +182,9 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IOrderedQueryable<T> OrderByMany<T>(this IQueryable<T> src, IEnumerable<string> sorters)
         {
+            Contract.Requires(src != null);
+            Contract.Requires(sorters != null);
+
             var param = ParameterExpression.Parameter(typeof(T));
 
             var initSorter = Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, sorters.First().Trim('-')), param);
@@ -168,6 +201,8 @@ namespace Wokhan.Collections.Generic.Extensions
         [Obsolete("Use DynamicQueryableExtensions from System.Linq.Dynamic package instead")]
         public static IOrderedQueryable<dynamic> OrderByMany(this IQueryable src, params string[] attributes)
         {
+            Contract.Requires(src != null);
+
             var innertype = src.GetInnerType();
             var m = typeof(EnumerableExtensions).GetMethod(nameof(OrderByManyTyped)).MakeGenericMethod(innertype);
             return (IOrderedQueryable<dynamic>)m.Invoke(null, new object[] { src, attributes });
@@ -175,6 +210,8 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IOrderedQueryable<T> OrderByManyTyped<T>(IQueryable<T> src, params string[] attributes)
         {
+            Contract.Requires(src != null);
+
             var param = Expression.Parameter(typeof(T));
 
             var ret = src.OrderBy(Expression.Lambda<Func<T, dynamic>>(Expression.Property(param, attributes.First()), param));
@@ -186,9 +223,11 @@ namespace Wokhan.Collections.Generic.Extensions
             return ret;
         }
 
-        public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> obj, int columnsToTake, int columnsToSkip = 0)
+        public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> src, int columnsToTake, int columnsToSkip = 0)
         {
-            IOrderedEnumerable<T[]> ret = obj.OrderBy(a => a.Length > columnsToSkip ? a[columnsToSkip] : default(T));
+            Contract.Requires(src != null);
+
+            IOrderedEnumerable<T[]> ret = src.OrderBy(a => a.Length > columnsToSkip ? a[columnsToSkip] : default(T));
             for (int i = columnsToSkip + 1; i < columnsToSkip + columnsToTake; i++)
             {
                 var ic = i;
@@ -199,9 +238,11 @@ namespace Wokhan.Collections.Generic.Extensions
         }
 
         [Obsolete("Use DynamicQueryableExtensions from System.Linq.Dynamic package instead")]
-        public static IOrderedQueryable<T[]> OrderByMany<T>(this IQueryable<T[]> obj, int columnsToTake, int columnsToSkip = 0)
+        public static IOrderedQueryable<T[]> OrderByMany<T>(this IQueryable<T[]> src, int columnsToTake, int columnsToSkip = 0)
         {
-            IOrderedQueryable<T[]> ret = obj.OrderBy(a => a.Length > columnsToSkip ? a[columnsToSkip] : default(T));
+            Contract.Requires(src != null);
+
+            IOrderedQueryable<T[]> ret = src.OrderBy(a => a.Length > columnsToSkip ? a[columnsToSkip] : default(T));
             for (int i = columnsToSkip + 1; i < columnsToSkip + columnsToTake; i++)
             {
                 var ic = i;
@@ -210,15 +251,19 @@ namespace Wokhan.Collections.Generic.Extensions
 
             return ret;
         }
-        public static IOrderedEnumerable<T[]> OrderByAll<T>(this IEnumerable<IEnumerable<T>> obj, int skip = 0)
+        public static IOrderedEnumerable<T[]> OrderByAll<T>(this IEnumerable<IEnumerable<T>> src, int skip = 0)
         {
-            return obj.Select(o => o.ToArray()).OrderByAll(skip);
+            Contract.Requires(src != null);
+
+            return src.Select(o => o.ToArray()).OrderByAll(skip);
         }
 
-        public static IOrderedEnumerable<T> OrderByAll<T>(this IEnumerable<T> obj, int skip = 0)
+        public static IOrderedEnumerable<T> OrderByAll<T>(this IEnumerable<T> src, int skip = 0)
         {
+            Contract.Requires(src != null);
+
             var allmembers = typeof(T).GetFields().Where(m => typeof(IComparable).IsAssignableFrom(m.FieldType)).ToArray();
-            IOrderedEnumerable<T> ret = obj.OrderBy(m => allmembers[skip].GetValue(m));
+            IOrderedEnumerable<T> ret = src.OrderBy(m => allmembers[skip].GetValue(m));
             for (int i = 1 + skip; i < allmembers.Length - 1; i++)
             {
                 var ic = i;
@@ -230,16 +275,20 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IOrderedQueryable<dynamic> OrderByAll(this IQueryable src)
         {
+            Contract.Requires(src != null);
+
             var innertype = src.GetInnerType();
             var m = typeof(EnumerableExtensions).GetMethod(nameof(OrderByAllTyped)).MakeGenericMethod(innertype);
             return (IOrderedQueryable<dynamic>)m.Invoke(null, new object[] { src, 0 });
         }
 
-        public static IOrderedQueryable<T> OrderByAllTyped<T>(this IQueryable<T> obj, int skip = 0)
+        public static IOrderedQueryable<T> OrderByAllTyped<T>(this IQueryable<T> src, int skip = 0)
         {
+            Contract.Requires(src != null);
+
             var allmembers = typeof(T).GetProperties().Where(m => m.PropertyType.IsGenericType || typeof(IComparable).IsAssignableFrom(m.PropertyType)).ToArray();
 
-            IOrderedQueryable<T> ret = obj.OrderBy(m => allmembers[skip].GetValue(m));
+            IOrderedQueryable<T> ret = src.OrderBy(m => allmembers[skip].GetValue(m));
             for (int i = skip; i < allmembers.Length; i++)
             {
                 var ic = i;
@@ -251,58 +300,53 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static void ReplaceAll<T>(this ObservableCollection<T> src, IEnumerable<T> all)
         {
+            Contract.Requires(src != null);
+
             src.Clear();
 
             src.AddAll(all);
         }
 
 
-        public static ParallelQuery<T> AsParallel<T>(this IEnumerable<T> source, bool useParallelism)
+        public static ParallelQuery<T> AsParallel<T>(this IEnumerable<T> src, bool useParallelism)
         {
-            var ret = source.AsParallel();
+            Contract.Requires(src != null);
+
+            var ret = src.AsParallel();
             return (useParallelism ? ret : ret.WithDegreeOfParallelism(1));
         }
 
         public static void AddAll<T>(this ICollection<T> src, IEnumerable<T> all)
         {
+            Contract.Requires(src != null);
+            Contract.Requires(all != null);
+
             foreach (var x in all)
             {
                 src.Add(x);
             }
         }
 
-        public static object AverageChecked<T>(this IEnumerable<T> src, bool ignoreErrors = false)
-        {
-            try
-            {
-                var converter = new DoubleConverter();
-                var s = src;
-                if (ignoreErrors)
-                {
-                    s = s.Where(c => converter.IsValid(c));
-                }
-                return src.Average(x => (double)converter.ConvertFrom(x));
-            }
-            catch
-            {
-                return "N/A";
-            }
-        }
+       
 
 
-        public static object ToObject(this IList o, Type targetclass, string[] attributes)
+        public static object ToObject(this IList src, Type targetclass, string[] attributes)
         {
+            Contract.Requires(src != null);
+            Contract.Requires(targetclass != null);
+            Contract.Requires(attributes != null);
+
             var trg = Activator.CreateInstance(targetclass);
 
             var pr = attributes.Join(targetclass.GetProperties(), a => a, b => b.Name, (a, b) => b).ToList();
-            if (o.Count < pr.Count)
+            if (src.Count < pr.Count)
             {
                 throw new ArgumentOutOfRangeException("Source has fewer values than expected");
             }
 
             for (int i = 0; i < pr.Count; i++)
             {
-                var value = o[i];
+                var value = src[i];
                 if (value != null && !DBNull.Value.Equals(value))
                 {
                     pr[i].SetValue(trg, value);
@@ -312,13 +356,17 @@ namespace Wokhan.Collections.Generic.Extensions
             return trg;
         }
 
-        public static T ToObject<T>(this IList o, string[] attributes)
+        public static T ToObject<T>(this IList src, string[] attributes)
         {
-            return (T)ToObject(o, typeof(T), attributes);
+            Contract.Requires(src != null);
+
+            return (T)ToObject(src, typeof(T), attributes);
         }
 
         public static T ToObject<T>(this IEnumerable src, string[] attributes)
         {
+            Contract.Requires(src != null);
+
             return (T)ToObject(src.Cast<object>().ToArray(), typeof(T), attributes);
         }
 
@@ -339,86 +387,55 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static IEnumerable<T> WithProgress<T>(this IEnumerable<T> src, Func<T, string> captionGetter, Action<string, double, double> callback = null, double? max = null)
         {
+            Contract.Requires(src != null);
+
             double p0max = max ?? src.Count();
             var p0cnt = 0;
             var cb = (callback ?? defaultCallback);
-            return src.Select(x =>
+            return src.ApplyToAll(x =>
             {
                 Interlocked.Increment(ref p0cnt);
                 cb(captionGetter(x), p0cnt, p0max);
-                return x;
             });
         }
 
-        public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, IEqualityComparer<T> comparer) 
+        public static IEnumerable<T> Merge<T>(this IEnumerable<T> src, IEnumerable<T> added, IEqualityComparer<T> comparer)
         {
+            Contract.Requires(src != null);
+            Contract.Requires(added != null);
+            Contract.Requires(comparer != null);
+
             var targetSet = new Set<T>(comparer);
             targetSet.UnionWith(added);
-            return source.Where(x => !targetSet.Contains(x, comparer)).Concat(added);
+            return src.Where(x => !targetSet.Contains(x, comparer)).Concat(added);
         }
 
         public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, Func<T, object> predicate)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-
-            if (added == null)
-            {
-                return source;
-            }
+            Contract.Requires(source != null);
+            Contract.Requires(added != null);
 
             return Merge(source, added, new GenericComparer<T>(predicate));
         }
 
         public static IEnumerable<T> WithProgress<T>(this IEnumerable<T> src, Action<double> callback)
         {
+            Contract.Requires(src != null);
+
             var p0cnt = 0;
-            return src.Select(x =>
+            return src.ApplyToAll(x =>
             {
                 Interlocked.Increment(ref p0cnt);
                 callback(p0cnt);
-                return x;
             });
         }
 
-        public static void Run<T>(this IEnumerable<T> src)
+        
+        public static DataTable AsDataTable<T>(this IEnumerable<T> src, IList<string> headers = null, string name = "Default")
         {
-            var enumerator = src.GetEnumerator();
-            while (enumerator.MoveNext())
-            {
-                ;
-            }
-        }
+            Contract.Requires(src != null);
 
-        public static DataTable ToPivotTable<T, TColumn, TRow, TData>(this IEnumerable<T> source, Expression<Func<T, TRow>> keysSelector, Expression<Func<T, TColumn>> pivotSelectorExpr, Func<IEnumerable<T>, TData> aggregateSelector, string tableName = "Default")
-        {
-            var columnSelector = pivotSelectorExpr.Compile();
-
-            IList<MemberInfo> membersCols = pivotSelectorExpr.GetMembers();
-            IList<MemberInfo> memberKeys = keysSelector.GetMembers();
-            Func<TColumn, object[]> arraygetter = pivotSelectorExpr.GetValues();
-            Func<TRow, object[]> arraygetterRow = keysSelector.GetValues();
-
-            var pivotValues = source.Select(columnSelector).Distinct().ToList();
-            var rows = source.GroupBy(keysSelector.Compile())
-                            .Select(rowGroup => arraygetterRow(rowGroup.Key).Concat(pivotValues.GroupJoin(
-                                    rowGroup,
-                                    c => c,
-                                    r => columnSelector(r),
-                                    (c, columnGroup) => aggregateSelector(columnGroup)).Cast<object>()).ToList())
-                            .ToList();
-
-            var columns = memberKeys.Select(m => m.Name).Concat(source.SelectMany(c => arraygetter(columnSelector(c))).Distinct().Select(c => c.ToString())).ToList();
-
-            return rows.AsDataTable(columns, tableName);
-        }
-
-
-        public static DataTable AsDataTable<T>(this IEnumerable<T> collection, IList<string> headers = null, string name = "Default")
-        {
-            DataTable ret = new DataTable(name);
+            var ret = new DataTable(name);
             ret.BeginLoadData();
 
             var members = typeof(T).GetProperties();
@@ -434,7 +451,7 @@ namespace Wokhan.Collections.Generic.Extensions
             {
                 if (cols == null)
                 {
-                    var firstItem = (IEnumerable<object>)collection.FirstOrDefault(); ;
+                    var firstItem = (IEnumerable<object>)src.FirstOrDefault(); ;
                     cols = Enumerable.Range(0, firstItem?.Count() ?? 0).Select(m => new DataColumn("P" + m, typeof(object))).ToArray();
                 }
                 arraygetter = x => ((IEnumerable)x).Cast<object>().ToArray();
@@ -448,7 +465,7 @@ namespace Wokhan.Collections.Generic.Extensions
             ret.Columns.AddRange(cols);
 
 
-            foreach (T o in collection)
+            foreach (T o in src)
             {
                 ret.Rows.Add(arraygetter(o));
             }
@@ -462,7 +479,9 @@ namespace Wokhan.Collections.Generic.Extensions
 
         public static DataTable AsDataTable(this IEnumerable<object[]> collection, string name, DataColumn[] cols)
         {
-            DataTable ret = new DataTable(name);
+            Contract.Requires(collection != null);
+
+            var ret = new DataTable(name);
             ret.Columns.AddRange(cols);
 
             ret.BeginLoadData();
@@ -513,30 +532,55 @@ namespace Wokhan.Collections.Generic.Extensions
             return ret;
         }*/
 
-        public static IEnumerable<dynamic> Pivot<T, TKeys, TPivoted, TAggregate>(this IEnumerable<T> source, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
+        public static DataTable ToPivotTable<T, TColumn, TRow, TData>(this IEnumerable<T> src, Expression<Func<T, TRow>> keysSelector, Expression<Func<T, TColumn>> pivotSelectorExpr, Func<IEnumerable<T>, TData> aggregateSelector, string tableName = "Default")
         {
-            IList<PropertyInfo> membersCols = pivotSelectorExpr.GetMembers().Cast<PropertyInfo>().ToList();
-            IList<PropertyInfo> memberKeys = keysSelector.GetMembers().Cast<PropertyInfo>().ToList();
+            Func<T, TColumn> columnSelector;
+            Func<TColumn, object[]> arraygetter;
 
-            Func<TPivoted, object[]> arraygetter = pivotSelectorExpr.GetValues();
-            Func<TKeys, object[]> arraygetterRow = keysSelector.GetValues();
+            var pivoted = PivotDataInternal(src, keysSelector, pivotSelectorExpr, aggregateSelector, out arraygetter, out columnSelector);
 
-            var columnSelector = pivotSelectorExpr.Compile();
-            var pivotValues = source.Select(columnSelector).Distinct().ToList();
+            var memberKeys = keysSelector.GetMembers();
+            var columns = memberKeys.Select(m => m.Name).Concat(src.SelectMany(c => arraygetter(columnSelector(c))).Distinct().Select(c => c.ToString())).ToList();
 
-            var properties = memberKeys.Select(m => new DynamicProperty(m.Name, typeof(string))).Concat(source.SelectMany(c => arraygetter(columnSelector(c))).Distinct().Select(c => new DynamicProperty(c.ToString(), typeof(string)))).ToArray();
+            return pivoted.ToList().AsDataTable(columns, tableName);
+        }
 
+        public static IEnumerable<dynamic> Pivot<T, TKeys, TPivoted, TAggregate>(this IEnumerable<T> src, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
+        {
+            Func<TPivoted, object[]> arraygetter;
+            Func<T, TPivoted> columnSelector;
+            
+            var pivoted = PivotDataInternal(src, keysSelector, pivotSelectorExpr, aggregateSelector, out arraygetter, out columnSelector);
+
+            var memberKeys = keysSelector.GetMembers().Cast<PropertyInfo>().ToList();
+            var properties = memberKeys.Select(m => new DynamicProperty(m.Name, typeof(string))).Concat(src.SelectMany(c => arraygetter(columnSelector(c))).Distinct().Select(c => new DynamicProperty(c.ToString(), typeof(string)))).ToArray();
             //var properties = memberKeys.Concat(membersCols).Select(m => new DynamicProperty(m.Name, m.PropertyType));
 
             var dynobj = DynamicClassFactory.CreateType(properties);
 
-            return source.GroupBy(keysSelector.Compile())
+            return pivoted.Select(args => Activator.CreateInstance(dynobj, args));
+        }
+
+        private static IEnumerable<object[]> PivotDataInternal<T, TKeys, TPivoted, TAggregate>(IEnumerable<T> src, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, out Func<TPivoted, object[]> arraygetter, out Func<T, TPivoted> columnSelector)
+        {
+            Contract.Requires(src != null);
+            Contract.Requires(keysSelector != null);
+            Contract.Requires(pivotSelectorExpr != null);
+
+            arraygetter = pivotSelectorExpr.GetValues();
+            
+            var columnSelectorLocal = pivotSelectorExpr.Compile();
+            var pivotValues = src.Select(columnSelectorLocal).Distinct().ToList();
+            var arraygetterRow = keysSelector.GetValues();
+
+            columnSelector = columnSelectorLocal;
+
+            return src.GroupBy(keysSelector.Compile())
                             .Select(rowGroup => arraygetterRow(rowGroup.Key).Concat(pivotValues.GroupJoin(
                                     rowGroup,
                                     c => c,
-                                    r => columnSelector(r),
-                                    (c, columnGroup) => aggregateSelector(columnGroup)).Cast<object>()).ToArray())
-                            .Select(args => Activator.CreateInstance(dynobj, args));
+                                    r => columnSelectorLocal(r),
+                                    (c, columnGroup) => aggregateSelector(columnGroup)).Cast<object>()).ToArray());
         }
     }
 }
