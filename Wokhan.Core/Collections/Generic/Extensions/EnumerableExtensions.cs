@@ -546,7 +546,7 @@ namespace Wokhan.Collections.Generic.Extensions
         }
 
 
-        public static IEnumerable<dynamic> Pivot<T, TKeys, TPivoted, TAggregate>(IEnumerable<T> src, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
+        public static IEnumerable<dynamic> Pivot<T, TKeys, TPivoted, TAggregate>(this IEnumerable<T> src, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
         {
             Func<TPivoted, object[]> arraygetter;
             Func<T, TPivoted> columnSelector;
