@@ -545,15 +545,20 @@ namespace Wokhan.Collections.Generic.Extensions
             return pivoted.ToList().AsDataTable(columns, tableName);
         }
 
-        public static IEnumerable<dynamic> Pivot<T, TKeys, TPivoted, TAggregate>(this IEnumerable<T> src, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
+
+        public static IEnumerable<dynamic> Pivot<T, TKeys, TPivoted, TAggregate>(IEnumerable<T> src, Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
         {
             Func<TPivoted, object[]> arraygetter;
             Func<T, TPivoted> columnSelector;
-            
+
             var pivoted = PivotDataInternal(src, keysSelector, pivotSelectorExpr, aggregateSelector, out arraygetter, out columnSelector);
 
             var memberKeys = keysSelector.GetMembers().Cast<PropertyInfo>().ToList();
-            var properties = memberKeys.Select(m => new DynamicProperty(m.Name, typeof(string))).Concat(src.SelectMany(c => arraygetter(columnSelector(c))).Distinct().Select(c => new DynamicProperty(c.ToString(), typeof(string)))).ToArray();
+            var properties = memberKeys.Select(m => new DynamicProperty(m.Name, m.PropertyType))
+                                       .Concat(src.SelectMany(c => arraygetter(columnSelector(c)))
+                                       .Distinct()
+                                       .Select(c => new DynamicProperty(c.ToString(), aggregateSelector.Method.ReturnType)))
+                                       .ToArray();
             //var properties = memberKeys.Concat(membersCols).Select(m => new DynamicProperty(m.Name, m.PropertyType));
 
             var dynobj = DynamicClassFactory.CreateType(properties);
@@ -568,7 +573,7 @@ namespace Wokhan.Collections.Generic.Extensions
             Contract.Requires(pivotSelectorExpr != null);
 
             arraygetter = pivotSelectorExpr.GetValues();
-            
+
             var columnSelectorLocal = pivotSelectorExpr.Compile();
             var pivotValues = src.Select(columnSelectorLocal).Distinct().ToList();
             var arraygetterRow = keysSelector.GetValues();
