@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,27 +82,42 @@ namespace Wokhan.Core.Extensions
         }
 
         private static ConditionalWeakTable<object, Dictionary<string, object>> _weakTable = new ConditionalWeakTable<object, Dictionary<string, object>>();
+
+        // Set to Internal to allow access from Test project
+        internal static ConditionalWeakTable<object, Dictionary<string, object>> WeakTable => _weakTable;
+
+        /// <summary>
+        /// Stores a custom property attached to the source object
+        /// The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks
+        /// <see cref="System.Runtime.CompilerServices.ConditionalWeakTable"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="src"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public static void SetCustomProperty<T>(this object src, string key, T value)
         {
-            if (!_weakTable.TryGetValue(src, out var dic))
-            {
-                _weakTable.Add(src, new Dictionary<string, object> { [key] = value });
-            }
-            else
-            {
-                dic[key] = value;
-            }
+            src = src ?? throw new ArgumentNullException(nameof(src));
+            key = key ?? throw new ArgumentNullException(nameof(key));
+
+            _weakTable.GetOrCreateValue(src)[key] = value;
         }
 
-        public static T GetCustomProperty<T>(this object src, string key)
+        /// <summary>
+        /// Retrieves an "attached" property for the source object
+        /// The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="src"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static T GetCustomProperty<T>(this object src, string key, T defaultIfNotFound = default)
         {
-            object ret = null;
-            if (_weakTable.TryGetValue(src, out var dic))
-            {
-                dic.TryGetValue(key, out ret);
-            }
-
-            return (T)ret;
+            src = src ?? throw new ArgumentNullException(nameof(src));
+            key = key ?? throw new ArgumentNullException(nameof(key));
+            
+            return _weakTable.TryGetValue(src, out var dic) && dic.TryGetValue(key, out var ret) ? (T)ret : defaultIfNotFound;
         }
     }
 }
+#nullable disable

@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.WPF", "Wokhan.WPF\Wo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wokhan.Core", "Wokhan.Core\Wokhan.Core.csproj", "{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wokhan.Core.Tests", "Wokhan.Core.Tests\Wokhan.Core.Tests.csproj", "{DABC8697-511E-4C96-9167-8A93B60CC3D5}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Wokhan.UI.Shared\Wokhan.UI.Shared.projitems*{4f5fd240-f312-4bdd-b1e2-10ce168190a4}*SharedItemsImports = 13
+		Wokhan.UI.Shared\Wokhan.UI.Shared.projitems*{67d52ae7-0de0-45d1-9034-1d2baa8d3f32}*SharedItemsImports = 5
+		Wokhan.UI.Shared\Wokhan.UI.Shared.projitems*{73aa94dc-8d76-462e-a9d2-8694b91ae01a}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,10 @@ Global
 		{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB60D3F-291B-49E0-B9BF-16E6C26DFAA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABC8697-511E-4C96-9167-8A93B60CC3D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABC8697-511E-4C96-9167-8A93B60CC3D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABC8697-511E-4C96-9167-8A93B60CC3D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABC8697-511E-4C96-9167-8A93B60CC3D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

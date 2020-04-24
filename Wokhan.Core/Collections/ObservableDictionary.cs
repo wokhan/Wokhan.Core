@@ -1,44 +1,15 @@
-﻿#nullable enable
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace Wokhan.Collections
 {
-    public class ObservableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, INotifyCollectionChanged where TKey: class 
+    public class ObservableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, INotifyCollectionChanged where TKey : class
                                                                                                          where TValue : class?
     {
+
         public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
-        public bool TryGetValue(TKey key, out TValue value, Action<TValue>? callback = null)
-        {
-            if (TryGetValue(key, out value, callback))
-            {
-                // Object found and not null
-                if (value is object)
-                {
-                    callback?.Invoke(value);
-                    return true;
-                }
-
-                // Or object is null, meaning loading is still in progress
-                void add(object sender, NotifyCollectionChangedEventArgs args)
-                {
-                    if (args.Action == NotifyCollectionChangedAction.Replace)
-                    {
-                        var entry = (KeyValuePair<TKey, TValue>)args.NewItems[0];
-                        if (key.Equals(entry.Key))
-                            callback?.Invoke(entry.Value);
-                    }
-                }
-                CollectionChanged += add;
-                CollectionChanged += (s, e) => CollectionChanged -= add;
-            }
-            
-            return false;
-        }
-
-
+        
         public new void Add(TKey key, TValue value)
         {
             base.Add(key, value);
@@ -78,4 +49,3 @@ namespace Wokhan.Collections
         }
     }
 }
-#nullable disable
