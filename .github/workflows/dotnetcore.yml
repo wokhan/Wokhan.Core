@@ -24,7 +24,7 @@ jobs:
     - name: Generate documentation (retrieve global tool)
       run: dotnet tool install xmldocmd -g
     - name: Generate documentation (generate)
-      run: xmldocmd ${{ github.repository }} ${{ github.repository }}\bin\Debug\netcoreapp3.0\${{ github.repository }}.dll docs --source https://github.com/wokhansoft/${{ github.repository }}
+      run: xmldocmd ${{ github.repository }}\bin\Debug\netcoreapp3.0\${{ github.repository }}.dll docs --source https://github.com/wokhansoft/${{ github.repository }}
     - name: Add & Commit
       uses: EndBug/add-and-commit@v4.1.0
       with:
