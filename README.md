@@ -1,5 +1,5 @@
 # Wokhan.Core
-Core functionalities for all Wokhan apps (and others)
+.Net Standard (core & framework) extensions and helpers
 
 # Documentation (or lack of)
 This application or library has been privately used by its author (@wokhan) for years but documentation doesn't exist yet. Coming soon!
