@@ -5,6 +5,7 @@
     <Authors>Wokhan Solutions</Authors>
     <Description>.NET Standard 2.0 / Core 3.0 extensions and useful classes by Wokhan Solutions.</Description>
     <LangVersion>8.0</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
