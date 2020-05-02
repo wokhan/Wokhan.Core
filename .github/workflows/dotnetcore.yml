@@ -24,7 +24,7 @@ jobs:
     - name: Generate documentation (retrieve global tool)
       run: dotnet tool install xmldocmd -g
     - name: Generate documentation (generate)
-      run: xmldocmd Wokhan.Core/bin/Release/netcoreapp3.0/Wokhan.Core.dll docs --source https://github.com/${{ github.repository }} --clean
+      run: xmldocmd Wokhan.Core/bin/Release/netcoreapp3.0/Wokhan.Core.dll docs/generated --source https://github.com/${{ github.repository }} --clean
     - name: Generate documentation (commit)
       uses: EndBug/add-and-commit@v4.1.0
       with:
