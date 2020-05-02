@@ -8,7 +8,6 @@ public static class DictionaryExtensions
 
 | name | description |
 | --- | --- |
-| static [AddIfValued](DictionaryExtensions/AddIfValued.md)(…) |  (2 methods) |
 | static [GetOrSetValueAsync&lt;TKey,TValue&gt;](DictionaryExtensions/GetOrSetValueAsync.md)(…) |  |
 
 ## See Also

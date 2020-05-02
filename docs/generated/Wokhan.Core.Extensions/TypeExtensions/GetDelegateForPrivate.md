@@ -1,7 +1,8 @@
 # TypeExtensions.GetDelegateForPrivate method
 
 ```csharp
-public static Delegate GetDelegateForPrivate(this Type type, Type type2, object obj, string method)
+public static Delegate GetDelegateForPrivate(this Type type, Type returnType, object obj, 
+    string method)
 ```
 
 ## See Also

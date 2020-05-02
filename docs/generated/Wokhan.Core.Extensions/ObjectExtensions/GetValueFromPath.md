@@ -1,7 +1,7 @@
 # ObjectExtensions.GetValueFromPath method
 
 ```csharp
-public static object GetValueFromPath(this object obj, string path)
+public static object GetValueFromPath(this object o, string path)
 ```
 
 ## See Also

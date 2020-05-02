@@ -8,8 +8,6 @@ public static class CollectionsExtensions
 
 | name | description |
 | --- | --- |
-| static [AddRange](CollectionsExtensions/AddRange.md)(…) |  |
-| static [AddRange&lt;T&gt;](CollectionsExtensions/AddRange.md)(…) |  |
 | static [InsertOrdered&lt;T,TK&gt;](CollectionsExtensions/InsertOrdered.md)(…) |  |
 | static [RemoveRange](CollectionsExtensions/RemoveRange.md)(…) |  |
 | static [RemoveRange&lt;T&gt;](CollectionsExtensions/RemoveRange.md)(…) |  |
