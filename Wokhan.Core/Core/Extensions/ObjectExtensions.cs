@@ -8,62 +8,87 @@ using System.Runtime.CompilerServices;
 
 namespace Wokhan.Core.Extensions
 {
+    /// <summary>
+    /// Extensions for all objects
+    /// </summary>
     public static class ObjectExtensions
     {
+        /// <summary>
+        /// Returns a single object as a singleton array
+        /// Note: Naming looks wrong. This method will probably be removed in a later release.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static T[] AsArray<T>(this T obj)
         {
             return new T[] { obj };
         }
 
-        public static Object GetValueFromPath(this Object obj, string path)
+        /// <summary>
+        /// Recursively retrieves a value from a deep property for the given object
+        /// <code>
+        /// myObject.GetValueFromPath("Property.PropertyProperty") returns myObject.Property.PropertyProperty
+        /// </code>
+        /// </summary>
+        /// <param name="o">Source object</param>
+        /// <param name="path">Path to the property (dot separated)</param>
+        /// <returns></returns>
+        public static object GetValueFromPath(this object o, string path)
         {
-            if (obj == null)
+            if (o == null)
             {
                 return null;
             }
 
-            if (path == ".") 
+            if (path == ".")
             {
-                return obj;
+                return o;
             }
-            
-            Type type = obj.GetType();
+
+            Type type = o.GetType();
             var props = path.Split('.');
-            var o = obj;
+            var current = o;
             foreach (var prop in props)
             {
-                o = type.GetProperty(prop).GetValue(o);
-                if (o == null)
+                current = type.GetProperty(prop).GetValue(current);
+                if (current == null)
                 {
                     break;
                 }
-                type = o.GetType();
+                type = current.GetType();
             }
 
-            return o;
+            return current;
         }
 
-        public static object SafeConvert(this object a, Type targetType)
+        /// <summary>
+        /// Tries to convert an object to a target type, handling nulls, DBNull and empty strings.
+        /// </summary>
+        /// <param name="o">Source object</param>
+        /// <param name="targetType">Target type</param>
+        /// <returns></returns>
+        public static object SafeConvert(this object o, Type targetType)
         {
             Contract.Requires(targetType != null);
 
-            if (a is DBNull || a == null || (a is string && String.IsNullOrEmpty((string)a)))
+            if (o is DBNull || o == null || (o is string && String.IsNullOrEmpty((string)o)))
             {
                 return null;
             }
             else
             {
-                Type aType = a.GetType();
+                Type aType = o.GetType();
                 Type t = Nullable.GetUnderlyingType(aType);
 
                 object safeValue;
                 if (t != null)
                 {
-                    safeValue = (a == null || a == DBNull.Value) ? null : Convert.ChangeType(a, t);
+                    safeValue = (o == null || o == DBNull.Value) ? null : Convert.ChangeType(o, t);
                 }
                 else
                 {
-                    safeValue = a;
+                    safeValue = o;
                 }
 
                 if (targetType.IsGenericType &&
@@ -81,15 +106,14 @@ namespace Wokhan.Core.Extensions
             }
         }
 
-        private static ConditionalWeakTable<object, Dictionary<string, object>> _weakTable = new ConditionalWeakTable<object, Dictionary<string, object>>();
-
         // Set to Internal to allow access from Test project
-        internal static ConditionalWeakTable<object, Dictionary<string, object>> WeakTable => _weakTable;
+        internal static ConditionalWeakTable<object, Dictionary<string, object>> WeakTable { get; } = new ConditionalWeakTable<object, Dictionary<string, object>>();
 
         /// <summary>
+        /// WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet.
         /// Stores a custom property attached to the source object
         /// The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks
-        /// <see cref="System.Runtime.CompilerServices.ConditionalWeakTable"/>
+        /// <seealso cref="ConditionalWeakTable{TKey, TValue}"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="src"></param>
@@ -100,12 +124,14 @@ namespace Wokhan.Core.Extensions
             src = src ?? throw new ArgumentNullException(nameof(src));
             key = key ?? throw new ArgumentNullException(nameof(key));
 
-            _weakTable.GetOrCreateValue(src)[key] = value;
+            WeakTable.GetOrCreateValue(src)[key] = value;
         }
 
         /// <summary>
+        /// WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet.
         /// Retrieves an "attached" property for the source object
         /// The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks
+        /// <seealso cref="ConditionalWeakTable{TKey, TValue}"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="src"></param>
@@ -115,8 +141,8 @@ namespace Wokhan.Core.Extensions
         {
             src = src ?? throw new ArgumentNullException(nameof(src));
             key = key ?? throw new ArgumentNullException(nameof(key));
-            
-            return _weakTable.TryGetValue(src, out var dic) && dic.TryGetValue(key, out var ret) ? (T)ret : defaultIfNotFound;
+
+            return WeakTable.TryGetValue(src, out var dic) && dic.TryGetValue(key, out var ret) ? (T)ret : defaultIfNotFound;
         }
     }
 }

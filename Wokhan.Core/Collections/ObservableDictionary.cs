@@ -3,6 +3,11 @@ using System.Collections.Specialized;
 
 namespace Wokhan.Collections
 {
+    /// <summary>
+    /// An observable variant of <see cref="Dictionary{TKey, TValue}"/>.
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
     public class ObservableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, INotifyCollectionChanged where TKey : class
                                                                                                          where TValue : class?
     {

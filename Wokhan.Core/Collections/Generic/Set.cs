@@ -12,6 +12,7 @@ namespace Wokhan.Core.Linq
 {
     /// <summary>
     /// A lightweight hash set.
+    /// Source: https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Set.cs
     /// </summary>
     /// <typeparam name="TElement">The type of the set's items.</typeparam>
     internal sealed class Set<TElement>

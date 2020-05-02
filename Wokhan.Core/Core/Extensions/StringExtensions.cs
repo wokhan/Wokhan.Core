@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Wokhan.Core.Extensions
 {
+    /// <summary>
+    /// String class extensions
+    /// </summary>
     public static class StringExtensions
     {
 
@@ -76,6 +79,15 @@ namespace Wokhan.Core.Extensions
             ['Z'] = 'Z'
         };
 
+        /// <summary>
+        /// Turns a string into pseudo string (latin languages only).
+        /// Helpful when translating UI to quickly see untranslated part.
+        /// <code>
+        /// "window".ToPseudo() returns "ωïñδôω"
+        /// </code>
+        /// </summary>
+        /// <param name="src"></param>
+        /// <returns>The transformed string</returns>
         public static string ToPseudo(this string src)
         {
             if (src == null)

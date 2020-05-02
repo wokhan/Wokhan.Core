@@ -303,7 +303,7 @@ namespace Wokhan.Collections.Generic.Extensions
             Contract.Requires(src != null);
 
             src.Clear();
-
+            
             src.AddAll(all);
         }
 

@@ -6,31 +6,46 @@ namespace Wokhan.Collections.Generic.Extensions
 {
     public static class DictionaryExtensions
     {
-
+        /// <summary>
+        /// Gets all items from a dictionary given a collection of keys.
+        /// If a value is not found, default(TValue) is returned.
+        /// </summary>
+        /// <typeparam name="TKey">Key type</typeparam>
+        /// <typeparam name="TValue">Value type</typeparam>
+        /// <param name="src">Source dictionary</param>
+        /// <param name="keys">List of keys to retrieve values for</param>
+        /// <returns></returns>
         public static IEnumerable<TValue> GetValuesOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> src, params TKey[] keys)
         {
-            return keys.Select(key => src.TryGetValue(key, out TValue val) ? val : default(TValue));
+            return keys.Select(key => src.TryGetValue(key, out TValue val) ? val : default);
         }
 
-        public static IEnumerable<KeyValuePair<object, object>> Flatten(this IEnumerable<KeyValuePair<object, object>> d, string parentKey = "")
+        /// <summary>
+        /// Flattens e dictionary (concatenating the keys using the specified separator, or "." if none.
+        /// </summary>
+        /// <param name="src">Source Dictionary (as a <see cref="IEnumerable{T}"/>)</param>
+        /// <param name="parentKey">Initial key</param>
+        /// <param name="separator">Keys separator (default: ".")</param>
+        /// <returns></returns>
+        public static IEnumerable<KeyValuePair<object, object>> Flatten(this IEnumerable<KeyValuePair<object, object>> src, string parentKey = "", string separator = ".")
         {
-            if (d != null)
+            if (src != null)
             {
-                return d.SelectMany(entry =>
+                return src.SelectMany(entry =>
                 {
                     if (entry.Value is IEnumerable<KeyValuePair<object, object>>)
                     {
-                        return ((IEnumerable<KeyValuePair<object, object>>)entry.Value).Flatten(parentKey + "." + entry.Key);
+                        return ((IEnumerable<KeyValuePair<object, object>>)entry.Value).Flatten($"{parentKey}{separator}{entry.Key}");
                     }
                     else if (entry.Value is IList<object>)
                     {
                         return ((IList<object>)entry.Value).OfType<IEnumerable<KeyValuePair<object, object>>>()
                                                            .SelectMany((e, i) => e.Flatten($"{parentKey}.{entry.Key}[{i}]"))
-                                                           .DefaultIfEmpty(new KeyValuePair<object, object>(parentKey + "." + entry.Key, String.Join(",", ((IList<object>)entry.Value).Select(e => e.ToString()).OrderBy(e => e))));
+                                                           .DefaultIfEmpty(new KeyValuePair<object, object>($"{parentKey}{separator}{entry.Key}", String.Join(",", ((IList<object>)entry.Value).Select(e => e.ToString()).OrderBy(e => e))));
                     }
                     else
                     {
-                        return new[] { new KeyValuePair<object, object>(parentKey + "." + entry.Key, entry.Value) };
+                        return new[] { new KeyValuePair<object, object>($"{parentKey}{separator}{entry.Key}", entry.Value) };
                     }
                 });
             }
