@@ -14,7 +14,7 @@ public static IList RemoveRange(this IList src, IEnumerable items)
 # CollectionsExtensions.RemoveRange&lt;T&gt; method (2 of 2)
 
 ```csharp
-public static IList<T> RemoveRange<T>(this IList<T> src, IEnumerable<T> items)
+public static ICollection<T> RemoveRange<T>(this ICollection<T> src, IEnumerable<T> items)
 ```
 
 ## See Also

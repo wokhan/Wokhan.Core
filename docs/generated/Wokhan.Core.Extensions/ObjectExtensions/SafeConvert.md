@@ -1,7 +1,7 @@
 # ObjectExtensions.SafeConvert method
 
 ```csharp
-public static object SafeConvert(this object a, Type targetType)
+public static object SafeConvert(this object o, Type targetType)
 ```
 
 ## See Also

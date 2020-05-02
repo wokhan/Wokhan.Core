@@ -2,7 +2,8 @@
 
 ```csharp
 public static IEnumerable<KeyValuePair<object, object>> Flatten(
-    this IEnumerable<KeyValuePair<object, object>> d, string parentKey = "")
+    this IEnumerable<KeyValuePair<object, object>> src, string parentKey = "", 
+    string separator = ".")
 ```
 
 ## See Also
