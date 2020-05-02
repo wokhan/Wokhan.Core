@@ -1,9 +1,18 @@
 # TypeExtensions.GetDelegateForPrivate method
 
+Creates a delegate to be able to call private methods on the given type. Use with caution, methods are private for a reason...
+
 ```csharp
 public static Delegate GetDelegateForPrivate(this Type type, Type returnType, object obj, 
     string method)
 ```
+
+| parameter | description |
+| --- | --- |
+| type | Souce Type to create delegate for |
+| returnType | Return type of the delegate |
+| obj | Object to get the delegate for |
+| method | Name of the private method to create the delegate for |
 
 ## See Also
 

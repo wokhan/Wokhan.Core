@@ -1,5 +1,7 @@
 # ValueTupleExtensions class
 
+Extension methods for ValueTuples
+
 ```csharp
 public static class ValueTupleExtensions
 ```
@@ -8,7 +10,7 @@ public static class ValueTupleExtensions
 
 | name | description |
 | --- | --- |
-| static [Deconstruct&lt;T&gt;](ValueTupleExtensions/Deconstruct.md)(…) |  (4 methods) |
+| static [Deconstruct&lt;T&gt;](ValueTupleExtensions/Deconstruct.md)(…) | Projects each elements of the specified IEnumerable to out parameters. (4 methods) |
 
 ## See Also
 

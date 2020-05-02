@@ -1,5 +1,7 @@
 # TaskExtensions class
 
+Extensions methods for the Task class.
+
 ```csharp
 public static class TaskExtensions
 ```
@@ -8,8 +10,8 @@ public static class TaskExtensions
 
 | name | description |
 | --- | --- |
-| static [WaitAllAndReturn&lt;T&gt;](TaskExtensions/WaitAllAndReturn.md)(…) |  |
-| static [WithExceptionHandling&lt;T&gt;](TaskExtensions/WithExceptionHandling.md)(…) |  |
+| static [WaitAllAndReturn&lt;T&gt;](TaskExtensions/WaitAllAndReturn.md)(…) | Wait for all specified tasks to and and returns all results as an enumerable. |
+| static [WithExceptionHandling&lt;T&gt;](TaskExtensions/WithExceptionHandling.md)(…) | Allows to handle exceptions in a LINQ async enumeration (invoking the given *action* if any when failing) |
 
 ## See Also
 

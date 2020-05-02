@@ -1,5 +1,7 @@
 # NotifyPropertyChangedExtensions class
 
+Extensions for INotifyPropertyChanged implementers
+
 ```csharp
 public static class NotifyPropertyChangedExtensions
 ```
@@ -8,7 +10,7 @@ public static class NotifyPropertyChangedExtensions
 
 | name | description |
 | --- | --- |
-| static [SetValue&lt;T&gt;](NotifyPropertyChangedExtensions/SetValue.md)(…) |  |
+| static [SetValue&lt;T&gt;](NotifyPropertyChangedExtensions/SetValue.md)(…) | Sets a value, taking care of the PropertyChangedEventHandler invocation if value did change. |
 
 ## See Also
 

@@ -1,8 +1,22 @@
 # StringExtensions.ToPseudo method
 
+Turns a string into pseudo string (latin languages only). Helpful when translating UI to quickly see untranslated part.
+
+```csharp
+"window".ToPseudo() returns "ωïñδôω"
+```
+
 ```csharp
 public static string ToPseudo(this string src)
 ```
+
+| parameter | description |
+| --- | --- |
+| src |  |
+
+## Return Value
+
+The transformed string
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # GroupedObservableCollection&lt;TK,T&gt;.BeginInit method
 
+Indicates that data loading begins
+
 ```csharp
 public void BeginInit()
 ```

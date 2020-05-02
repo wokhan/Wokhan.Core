@@ -1,8 +1,15 @@
 # GroupedObservableCollection&lt;TK,T&gt;.Add method
 
+Adds an item to the list, optionnally inserting it at the position defined by the *orderBy* parameter.
+
 ```csharp
 public void Add(T item, Func<T, IComparable> orderBy = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| item | The item to add |
+| orderBy | Method defining the order to take into account when inserting the item |
 
 ## See Also
 

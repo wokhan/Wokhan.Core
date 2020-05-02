@@ -1,9 +1,18 @@
 # DictionaryExtensions.GetValuesOrDefault&lt;TKey,TValue&gt; method
 
+Gets all items from a dictionary given a collection of keys. If a value is not found, default(TValue) is returned.
+
 ```csharp
 public static IEnumerable<TValue> GetValuesOrDefault<TKey, TValue>(
     this Dictionary<TKey, TValue> src, params TKey[] keys)
 ```
+
+| parameter | description |
+| --- | --- |
+| TKey | Key type |
+| TValue | Value type |
+| src | Source dictionary |
+| keys | List of keys to retrieve values for |
 
 ## See Also
 

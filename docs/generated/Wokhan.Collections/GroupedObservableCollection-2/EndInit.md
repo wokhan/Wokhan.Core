@@ -1,5 +1,7 @@
 # GroupedObservableCollection&lt;TK,T&gt;.EndInit method
 
+Indicates that data loading ends
+
 ```csharp
 public void EndInit()
 ```

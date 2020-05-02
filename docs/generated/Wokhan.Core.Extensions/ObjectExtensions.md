@@ -1,5 +1,7 @@
 # ObjectExtensions class
 
+Extensions for all objects
+
 ```csharp
 public static class ObjectExtensions
 ```
@@ -8,11 +10,11 @@ public static class ObjectExtensions
 
 | name | description |
 | --- | --- |
-| static [AsArray&lt;T&gt;](ObjectExtensions/AsArray.md)(…) |  |
-| static [GetCustomProperty&lt;T&gt;](ObjectExtensions/GetCustomProperty.md)(…) |  |
-| static [GetValueFromPath](ObjectExtensions/GetValueFromPath.md)(…) |  |
-| static [SafeConvert](ObjectExtensions/SafeConvert.md)(…) |  |
-| static [SetCustomProperty&lt;T&gt;](ObjectExtensions/SetCustomProperty.md)(…) |  |
+| static [AsArray&lt;T&gt;](ObjectExtensions/AsArray.md)(…) | Returns a single object as a singleton array Note: Naming looks wrong. This method will probably be removed in a later release. |
+| static [GetCustomProperty&lt;T&gt;](ObjectExtensions/GetCustomProperty.md)(…) | WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet. Retrieves an "attached" property for the source object The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks |
+| static [GetValueFromPath](ObjectExtensions/GetValueFromPath.md)(…) | Recursively retrieves a value from a deep property for the given object |
+| static [SafeConvert](ObjectExtensions/SafeConvert.md)(…) | Tries to convert an object to a target type, handling nulls, DBNull and empty strings. |
+| static [SetCustomProperty&lt;T&gt;](ObjectExtensions/SetCustomProperty.md)(…) | WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet. Stores a custom property attached to the source object The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks |
 
 ## See Also
 

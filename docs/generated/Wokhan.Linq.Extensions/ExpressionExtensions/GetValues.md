@@ -1,8 +1,24 @@
 # ExpressionExtensions.GetValues&lt;T,TR&gt; method
 
+Returns a getter to access all properties values from an expression, as an objects array.
+
+```csharp
+TODO: add examples
+```
+
 ```csharp
 public static Func<TR, object[]> GetValues<T, TR>(this Expression<Func<T, TR>> expression)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Expression input type |
+| TR | Expression output type |
+| expression | Source expression |
+
+## Return Value
+
+A !:Func&lt;TR, Object[]&gt; used to access all property values (as an object array)
 
 ## See Also
 

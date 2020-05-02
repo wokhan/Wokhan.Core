@@ -1,8 +1,14 @@
 # GenericComparer&lt;T&gt;.GetHashCode method
 
+Returns the hash code of the key as retrieved by the key getter method
+
 ```csharp
 public override int GetHashCode(T obj)
 ```
+
+| parameter | description |
+| --- | --- |
+| obj |  |
 
 ## See Also
 

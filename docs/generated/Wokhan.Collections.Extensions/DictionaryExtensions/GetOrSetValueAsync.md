@@ -1,11 +1,25 @@
 # DictionaryExtensions.GetOrSetValueAsync&lt;TKey,TValue&gt; method
 
+WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet. Tries to get a value from the source dictionary, and asynchronously adds it if needed, using the provided async value resolver.
+
 ```csharp
 public static Task<TValue> GetOrSetValueAsync<TKey, TValue>(this IDictionary<TKey, TValue> src, 
     TKey key, Func<Task<TValue>> asyncValueResolver)
     where TKey : class
     where TValue : class
 ```
+
+| parameter | description |
+| --- | --- |
+| TKey | Dictionary key type |
+| TValue | Dictionary value type |
+| src | Source dictionary |
+| key | Key for the entry to get (or set) |
+| asyncValueResolver | Async method to compute the value to add |
+
+## Return Value
+
+The retrieved value
 
 ## See Also
 

@@ -1,16 +1,22 @@
 # GenericComparer&lt;T&gt; class
 
+Generic equality comparer, to quickly define custom comparer
+
 ```csharp
 public class GenericComparer<T> : EqualityComparer<T>
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Type of the objects to compare |
 
 ## Public Members
 
 | name | description |
 | --- | --- |
-| [GenericComparer](GenericComparer-1/GenericComparer.md)(…) |  |
-| override [Equals](GenericComparer-1/Equals.md)(…) |  |
-| override [GetHashCode](GenericComparer-1/GetHashCode.md)(…) |  |
+| [GenericComparer](GenericComparer-1/GenericComparer.md)(…) | Creates a new [`GenericComparer`](GenericComparer-1.md) using the specified key getter |
+| override [Equals](GenericComparer-1/Equals.md)(…) | Check two items keys (as retrieved by the key getter) for equality |
+| override [GetHashCode](GenericComparer-1/GetHashCode.md)(…) | Returns the hash code of the key as retrieved by the key getter method |
 
 ## See Also
 

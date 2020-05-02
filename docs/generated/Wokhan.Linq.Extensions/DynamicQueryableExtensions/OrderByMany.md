@@ -1,9 +1,21 @@
 # DynamicQueryableExtensions.OrderByMany&lt;T&gt; method
 
+Orders a queryable by all specified sorters (passed as property names)
+
 ```csharp
 public static IOrderedQueryable<T> OrderByMany<T>(this IQueryable<T> src, 
     IEnumerable<string> sorters)
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| src | Source IQueryable to apply ordering to |
+| sorters | Enumeration of property to sort on (to sort by descending order, add a "-" at the end of the property name) |
+
+## Return Value
+
+Returns a IOrderedQueryable
 
 ## See Also
 

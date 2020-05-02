@@ -1,8 +1,15 @@
 # TaskExtensions.WaitAllAndReturn&lt;T&gt; method
 
+Wait for all specified tasks to and and returns all results as an enumerable.
+
 ```csharp
 public static IEnumerable<T> WaitAllAndReturn<T>(this IEnumerable<Task<T>> src)
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| src |  |
 
 ## See Also
 

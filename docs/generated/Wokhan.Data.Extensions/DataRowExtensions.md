@@ -1,5 +1,7 @@
 # DataRowExtensions class
 
+Extension methods for the DataRow type
+
 ```csharp
 public static class DataRowExtensions
 ```
@@ -8,7 +10,7 @@ public static class DataRowExtensions
 
 | name | description |
 | --- | --- |
-| static [GetParentRows](DataRowExtensions/GetParentRows.md)(…) |  |
+| static [GetParentRows](DataRowExtensions/GetParentRows.md)(…) | Returns parent rows for a given DataRow |
 
 ## See Also
 

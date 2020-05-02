@@ -1,5 +1,7 @@
 # GroupedObservableCollection&lt;TK,T&gt;.Loading property
 
+Indicates if data is still loading
+
 ```csharp
 public bool Loading { get; }
 ```

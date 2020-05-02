@@ -1,9 +1,21 @@
 # DynamicQueryableExtensions.AggregateBy method
 
+Performs multiple agregations dynamically, returning a queryable collection of dynamic objects which properties defined by the *members* list, along with new properties computed using *aggregateOperation*.
+
 ```csharp
 public static IQueryable AggregateBy(this IQueryable src, IList<string> members, 
     IDictionary<string, string> aggregateOperation)
 ```
+
+| parameter | description |
+| --- | --- |
+| src | Source IQueryable |
+| members | Names of the properties to keep from initial object type |
+| aggregateOperation | Pair of property name and agregate formula (as defined for System.Linq.Dynamic library) |
+
+## Return Value
+
+Projected IQueryable with item types matching the dynamically constructed type as defined by passed parameters
 
 ## See Also
 

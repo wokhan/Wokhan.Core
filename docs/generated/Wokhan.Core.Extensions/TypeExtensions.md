@@ -1,5 +1,7 @@
 # TypeExtensions class
 
+Type class extensions methods
+
 ```csharp
 public static class TypeExtensions
 ```
@@ -8,10 +10,10 @@ public static class TypeExtensions
 
 | name | description |
 | --- | --- |
-| static [AnonymousToKnownType&lt;T&gt;](TypeExtensions/AnonymousToKnownType.md)(…) |  |
-| static [GetDefault](TypeExtensions/GetDefault.md)(…) |  |
-| static [GetDefaultGeneric&lt;T&gt;](TypeExtensions/GetDefaultGeneric.md)() |  |
-| static [GetDelegateForPrivate](TypeExtensions/GetDelegateForPrivate.md)(…) |  |
+| static [AnonymousToKnownType&lt;T&gt;](TypeExtensions/AnonymousToKnownType.md)(…) | Casts an anonymously typed object to a known type (which must have the same properties, of course) |
+| static [GetDefault](TypeExtensions/GetDefault.md)(…) | Returns the default value for a dynamic type (not know at runtime) |
+| static [GetDefaultGeneric&lt;T&gt;](TypeExtensions/GetDefaultGeneric.md)() | Returns the default value for a dynamic type (not know at runtime) |
+| static [GetDelegateForPrivate](TypeExtensions/GetDelegateForPrivate.md)(…) | Creates a delegate to be able to call private methods on the given type. Use with caution, methods are private for a reason... |
 
 ## See Also
 

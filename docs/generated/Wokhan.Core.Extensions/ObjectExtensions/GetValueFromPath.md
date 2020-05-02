@@ -1,8 +1,19 @@
 # ObjectExtensions.GetValueFromPath method
 
+Recursively retrieves a value from a deep property for the given object
+
+```csharp
+myObject.GetValueFromPath("Property.PropertyProperty") returns myObject.Property.PropertyProperty
+```
+
 ```csharp
 public static object GetValueFromPath(this object o, string path)
 ```
+
+| parameter | description |
+| --- | --- |
+| o | Source object |
+| path | Path to the property (dot separated) |
 
 ## See Also
 

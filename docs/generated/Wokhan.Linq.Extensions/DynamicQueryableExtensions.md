@@ -1,5 +1,7 @@
 # DynamicQueryableExtensions class
 
+Extension methods for IQueryable objects (extending DynamicQueryableExtensions library)
+
 ```csharp
 public static class DynamicQueryableExtensions
 ```
@@ -8,8 +10,8 @@ public static class DynamicQueryableExtensions
 
 | name | description |
 | --- | --- |
-| static [AggregateBy](DynamicQueryableExtensions/AggregateBy.md)(…) |  |
-| static [OrderByMany&lt;T&gt;](DynamicQueryableExtensions/OrderByMany.md)(…) |  |
+| static [AggregateBy](DynamicQueryableExtensions/AggregateBy.md)(…) | Performs multiple agregations dynamically, returning a queryable collection of dynamic objects which properties defined by the *members* list, along with new properties computed using *aggregateOperation*. |
+| static [OrderByMany&lt;T&gt;](DynamicQueryableExtensions/OrderByMany.md)(…) | Orders a queryable by all specified sorters (passed as property names) |
 
 ## See Also
 

@@ -8,8 +8,8 @@ public static class DictionaryExtensions
 
 | name | description |
 | --- | --- |
-| static [Flatten](DictionaryExtensions/Flatten.md)(…) |  |
-| static [GetValuesOrDefault&lt;TKey,TValue&gt;](DictionaryExtensions/GetValuesOrDefault.md)(…) |  |
+| static [Flatten](DictionaryExtensions/Flatten.md)(…) | Flattens e dictionary (concatenating the keys using the specified separator, or "." if none. |
+| static [GetValuesOrDefault&lt;TKey,TValue&gt;](DictionaryExtensions/GetValuesOrDefault.md)(…) | Gets all items from a dictionary given a collection of keys. If a value is not found, default(TValue) is returned. |
 
 ## See Also
 

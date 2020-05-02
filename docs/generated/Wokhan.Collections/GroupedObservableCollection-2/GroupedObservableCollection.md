@@ -1,8 +1,15 @@
 # GroupedObservableCollection&lt;TK,T&gt; constructor
 
+Builds a new [`GroupedObservableCollection`](../GroupedObservableCollection-2.md), grouping by the "keyGetter" specifier.
+
 ```csharp
 public GroupedObservableCollection(Func<T, TK> keyGetter, List<TK> initialKeys = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| keyGetter | Method to retrieve the key to group values on |
+| initialKeys | Initial list of key values |
 
 ## See Also
 

@@ -1,8 +1,14 @@
 # GenericComparer&lt;T&gt; constructor
 
+Creates a new [`GenericComparer`](../GenericComparer-1.md) using the specified key getter
+
 ```csharp
 public GenericComparer(Func<T, object> keyGetter)
 ```
+
+| parameter | description |
+| --- | --- |
+| keyGetter | Method used to retrieve the value (key) to compare on |
 
 ## See Also
 

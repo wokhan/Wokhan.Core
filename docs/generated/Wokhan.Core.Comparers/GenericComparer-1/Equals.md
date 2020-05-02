@@ -1,8 +1,15 @@
 # GenericComparer&lt;T&gt;.Equals method
 
+Check two items keys (as retrieved by the key getter) for equality
+
 ```csharp
 public override bool Equals(T x, T y)
 ```
+
+| parameter | description |
+| --- | --- |
+| x |  |
+| y |  |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # CollectionsExtensions class
 
+Extensions for System.Collections.Generic types
+
 ```csharp
 public static class CollectionsExtensions
 ```
@@ -8,9 +10,9 @@ public static class CollectionsExtensions
 
 | name | description |
 | --- | --- |
-| static [InsertOrdered&lt;T,TK&gt;](CollectionsExtensions/InsertOrdered.md)(…) |  |
-| static [RemoveRange](CollectionsExtensions/RemoveRange.md)(…) |  |
-| static [RemoveRange&lt;T&gt;](CollectionsExtensions/RemoveRange.md)(…) |  |
+| static [InsertOrdered&lt;T,TK&gt;](CollectionsExtensions/InsertOrdered.md)(…) | Insert an element into an IList following the specified ordering selector. Note: to be retested. Please don't trust this code as no automated test exists and I think it's wrongly designed... |
+| static [RemoveRange](CollectionsExtensions/RemoveRange.md)(…) | Removes a collection of items of a given IList. |
+| static [RemoveRange&lt;T&gt;](CollectionsExtensions/RemoveRange.md)(…) | Removes a collection of items from another collection |
 
 ## See Also
 

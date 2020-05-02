@@ -1,9 +1,29 @@
 # NotifyPropertyChangedExtensions.SetValue&lt;T&gt; method
 
+Sets a value, taking care of the PropertyChangedEventHandler invocation if value did change.
+
+```csharp
+private bool _loading;
+public bool Loading
+{
+   get => _loading;
+   private set => this.SetValue(ref _loading, value, RaisePropertyChanged);
+}
+```
+
 ```csharp
 public static void SetValue<T>(this INotifyPropertyChanged src, ref T field, T value, 
     Action<string> propertyChanged = null, [CallerMemberName] string propertyName = null)
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| src | Ignored parameter (only used to allow this method to be used as an extension on INotifyPropertyChanged implementers |
+| field | Field to set |
+| value | Value to set the field to |
+| propertyChanged | Handler |
+| propertyName | "Injected" target property name (sent to the *propertyChanged* handler) |
 
 ## See Also
 

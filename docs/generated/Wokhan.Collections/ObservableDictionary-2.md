@@ -1,10 +1,17 @@
 # ObservableDictionary&lt;TKey,TValue&gt; class
 
+An observable variant of Dictionary.
+
 ```csharp
 public class ObservableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, INotifyCollectionChanged
     where TKey : class
     where TValue : class
 ```
+
+| parameter | description |
+| --- | --- |
+| TKey |  |
+| TValue |  |
 
 ## Public Members
 

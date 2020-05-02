@@ -1,8 +1,17 @@
 # ValueTupleExtensions.Deconstruct&lt;T&gt; method (1 of 4)
 
+Projects each elements of the specified IEnumerable to out parameters.
+
 ```csharp
 public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+| x1 | Variable to map the first item to |
+| x2 | Variable to map the second item to |
 
 ## See Also
 
@@ -13,9 +22,19 @@ public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2)
 
 # ValueTupleExtensions.Deconstruct&lt;T&gt; method (2 of 4)
 
+Projects each elements of the specified IEnumerable to out parameters.
+
 ```csharp
 public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2, out T x3)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+| x1 | Variable to map the first item to |
+| x2 | Variable to map the second item to |
+| x3 | Variable to map the third item to |
 
 ## See Also
 
@@ -26,9 +45,20 @@ public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2, o
 
 # ValueTupleExtensions.Deconstruct&lt;T&gt; method (3 of 4)
 
+Projects each elements of the specified IEnumerable to out parameters.
+
 ```csharp
 public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2, out T x3, out T x4)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+| x1 | Variable to map the first item to |
+| x2 | Variable to map the second item to |
+| x3 | Variable to map the third item to |
+| x4 | Variable to map the fourth item to |
 
 ## See Also
 
@@ -39,10 +69,22 @@ public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2, o
 
 # ValueTupleExtensions.Deconstruct&lt;T&gt; method (4 of 4)
 
+Projects each elements of the specified IEnumerable to out parameters.
+
 ```csharp
 public static void Deconstruct<T>(this IEnumerable<T> src, out T x1, out T x2, out T x3, out T x4, 
     out T x5)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+| x1 | Variable to map the first item to |
+| x2 | Variable to map the second item to |
+| x3 | Variable to map the third item to |
+| x4 | Variable to map the fourth item to |
+| x5 | Variable to map the fifth item to |
 
 ## See Also
 

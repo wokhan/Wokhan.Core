@@ -1,5 +1,7 @@
 # ExpressionExtensions class
 
+Extension methods for Expression class
+
 ```csharp
 public static class ExpressionExtensions
 ```
@@ -8,8 +10,8 @@ public static class ExpressionExtensions
 
 | name | description |
 | --- | --- |
-| static [GetMembers&lt;T,TR&gt;](ExpressionExtensions/GetMembers.md)(…) |  |
-| static [GetValues&lt;T,TR&gt;](ExpressionExtensions/GetValues.md)(…) |  |
+| static [GetMembers&lt;T,TR&gt;](ExpressionExtensions/GetMembers.md)(…) | Get all members used in a LINQ Expression (built from a lambda for instance) |
+| static [GetValues&lt;T,TR&gt;](ExpressionExtensions/GetValues.md)(…) | Returns a getter to access all properties values from an expression, as an objects array. |
 
 ## See Also
 

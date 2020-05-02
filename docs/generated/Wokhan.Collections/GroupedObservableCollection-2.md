@@ -1,20 +1,27 @@
 # GroupedObservableCollection&lt;TK,T&gt; class
 
+Custom observable collection with grouping abilities
+
 ```csharp
 public class GroupedObservableCollection<TK, T> : ObservableCollection<ObservableGrouping<TK, T>>
 ```
+
+| parameter | description |
+| --- | --- |
+| TK | Groups key type |
+| T | Items type |
 
 ## Public Members
 
 | name | description |
 | --- | --- |
-| [GroupedObservableCollection](GroupedObservableCollection-2/GroupedObservableCollection.md)(…) |  |
-| [Keys](GroupedObservableCollection-2/Keys.md) { get; } |  |
-| [Loading](GroupedObservableCollection-2/Loading.md) { get; } |  |
-| [Values](GroupedObservableCollection-2/Values.md) { get; } |  |
-| [Add](GroupedObservableCollection-2/Add.md)(…) |  |
-| [BeginInit](GroupedObservableCollection-2/BeginInit.md)() |  |
-| [EndInit](GroupedObservableCollection-2/EndInit.md)() |  |
+| [GroupedObservableCollection](GroupedObservableCollection-2/GroupedObservableCollection.md)(…) | Builds a new [`GroupedObservableCollection`](GroupedObservableCollection-2.md), grouping by the "keyGetter" specifier. |
+| [Keys](GroupedObservableCollection-2/Keys.md) { get; } | Returns all keys for this dictionary |
+| [Loading](GroupedObservableCollection-2/Loading.md) { get; } | Indicates if data is still loading |
+| [Values](GroupedObservableCollection-2/Values.md) { get; } | Returns all values for this dictionary |
+| [Add](GroupedObservableCollection-2/Add.md)(…) | Adds an item to the list, optionnally inserting it at the position defined by the *orderBy* parameter. |
+| [BeginInit](GroupedObservableCollection-2/BeginInit.md)() | Indicates that data loading begins |
+| [EndInit](GroupedObservableCollection-2/EndInit.md)() | Indicates that data loading ends |
 | [RaisePropertyChanged](GroupedObservableCollection-2/RaisePropertyChanged.md)(…) |  |
 
 ## Protected Members

@@ -1,10 +1,22 @@
 # TaskExtensions.WithExceptionHandling&lt;T&gt; method
 
+Allows to handle exceptions in a LINQ async enumeration (invoking the given *action* if any when failing)
+
 ```csharp
 public static IEnumerable<Task<T>> WithExceptionHandling<T>(this IEnumerable<Task<T>> src, 
     Action<Exception> action = null)
     where T : class
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items enumerable |
+| src | Collection of tasks |
+| action | Callback called when an exception is catched while enumerating |
+
+## Return Value
+
+The same enumeration, with exception handling added
 
 ## See Also
 

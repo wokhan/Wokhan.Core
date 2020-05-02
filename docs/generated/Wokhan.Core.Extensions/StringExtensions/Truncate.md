@@ -1,8 +1,15 @@
 # StringExtensions.Truncate method
 
+Truncates a string to the specified max length (if needed)
+
 ```csharp
 public static string Truncate(this string str, int maxLen)
 ```
+
+| parameter | description |
+| --- | --- |
+| source | Source string |
+| maxlength | Maximum length to truncate the string at |
 
 ## See Also
 

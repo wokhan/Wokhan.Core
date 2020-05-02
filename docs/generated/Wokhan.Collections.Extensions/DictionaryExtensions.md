@@ -1,5 +1,7 @@
 # DictionaryExtensions class
 
+Extensions methods for the Dictionary class.
+
 ```csharp
 public static class DictionaryExtensions
 ```
@@ -8,7 +10,7 @@ public static class DictionaryExtensions
 
 | name | description |
 | --- | --- |
-| static [GetOrSetValueAsync&lt;TKey,TValue&gt;](DictionaryExtensions/GetOrSetValueAsync.md)(…) |  |
+| static [GetOrSetValueAsync&lt;TKey,TValue&gt;](DictionaryExtensions/GetOrSetValueAsync.md)(…) | WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet. Tries to get a value from the source dictionary, and asynchronously adds it if needed, using the provided async value resolver. |
 
 ## See Also
 

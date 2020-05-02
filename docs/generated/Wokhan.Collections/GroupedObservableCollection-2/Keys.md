@@ -1,5 +1,7 @@
 # GroupedObservableCollection&lt;TK,T&gt;.Keys property
 
+Returns all keys for this dictionary
+
 ```csharp
 public IEnumerable<TK> Keys { get; }
 ```

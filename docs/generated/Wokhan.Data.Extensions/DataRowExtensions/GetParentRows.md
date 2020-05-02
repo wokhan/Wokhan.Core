@@ -1,8 +1,18 @@
 # DataRowExtensions.GetParentRows method
 
+Returns parent rows for a given DataRow
+
 ```csharp
 public static IEnumerable<DataRow> GetParentRows(this DataRow drow)
 ```
+
+| parameter | description |
+| --- | --- |
+| drow | Source row to retrieve parents for |
+
+## Return Value
+
+All parents pointing to the specified row
 
 ## See Also
 

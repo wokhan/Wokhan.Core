@@ -1,8 +1,14 @@
 # TypeExtensions.GetDefaultGeneric&lt;T&gt; method
 
+Returns the default value for a dynamic type (not know at runtime)
+
 ```csharp
 public static T GetDefaultGeneric<T>()
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
 
 ## See Also
 

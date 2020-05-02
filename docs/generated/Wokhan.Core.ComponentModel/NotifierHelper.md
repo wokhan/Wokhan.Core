@@ -1,5 +1,7 @@
 # NotifierHelper class
 
+Simple helper to avoid implementing INotifyPropertyChanged every time.
+
 ```csharp
 public class NotifierHelper : INotifyPropertyChanged
 ```
@@ -15,7 +17,7 @@ public class NotifierHelper : INotifyPropertyChanged
 
 | name | description |
 | --- | --- |
-| [NotifyPropertyChanged](NotifierHelper/NotifyPropertyChanged.md)(…) |  |
+| [NotifyPropertyChanged](NotifierHelper/NotifyPropertyChanged.md)(…) | Event invocation (injects the property name using CallerMemberNameAttribute when used in setters, no need for nameof operator) |
 
 ## See Also
 

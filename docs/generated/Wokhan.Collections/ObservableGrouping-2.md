@@ -1,9 +1,16 @@
 # ObservableGrouping&lt;TK,T&gt; class
 
+IGrouping specialization used by [`GroupedObservableCollection`](GroupedObservableCollection-2.md)
+
 ```csharp
 public class ObservableGrouping<TK, T> : ObservableCollection<T>, IGrouping<TK, T>, 
     IObservableGrouping<TK>
 ```
+
+| parameter | description |
+| --- | --- |
+| TK | Groups key type |
+| T | Item type |
 
 ## Public Members
 

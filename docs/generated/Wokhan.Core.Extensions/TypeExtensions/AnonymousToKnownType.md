@@ -1,9 +1,20 @@
 # TypeExtensions.AnonymousToKnownType&lt;T&gt; method
 
+Casts an anonymously typed object to a known type (which must have the same properties, of course)
+
 ```csharp
 public static T AnonymousToKnownType<T>(this object o)
     where T : class
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Target type |
+| o | Source dynamicobject |
+
+## Return Value
+
+The same object but with the target type
 
 ## See Also
 

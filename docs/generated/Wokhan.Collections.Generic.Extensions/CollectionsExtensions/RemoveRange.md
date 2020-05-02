@@ -1,8 +1,15 @@
 # CollectionsExtensions.RemoveRange method (1 of 2)
 
+Removes a collection of items of a given IList.
+
 ```csharp
 public static IList RemoveRange(this IList src, IEnumerable items)
 ```
+
+| parameter | description |
+| --- | --- |
+| src | Source collection |
+| items | Items to remove |
 
 ## See Also
 
@@ -13,9 +20,17 @@ public static IList RemoveRange(this IList src, IEnumerable items)
 
 # CollectionsExtensions.RemoveRange&lt;T&gt; method (2 of 2)
 
+Removes a collection of items from another collection
+
 ```csharp
 public static ICollection<T> RemoveRange<T>(this ICollection<T> src, IEnumerable<T> items)
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| src | Source collection |
+| items | The items to remove |
 
 ## See Also
 

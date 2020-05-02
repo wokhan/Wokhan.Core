@@ -1,10 +1,22 @@
 # CollectionsExtensions.InsertOrdered&lt;T,TK&gt; method
 
+Insert an element into an IList following the specified ordering selector. Note: to be retested. Please don't trust this code as no automated test exists and I think it's wrongly designed...
+
 ```csharp
 public static void InsertOrdered<T, TK>(this IList<T> src, T value, TK orderDet, 
     Func<T, TK> orderDetCib, bool distinct = false)
     where TK : IComparable
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| TK |  |
+| src |  |
+| value |  |
+| orderDet |  |
+| orderDetCib |  |
+| distinct |  |
 
 ## See Also
 

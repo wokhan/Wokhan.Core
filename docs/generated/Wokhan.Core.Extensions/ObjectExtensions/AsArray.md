@@ -1,8 +1,15 @@
 # ObjectExtensions.AsArray&lt;T&gt; method
 
+Returns a single object as a singleton array Note: Naming looks wrong. This method will probably be removed in a later release.
+
 ```csharp
 public static T[] AsArray<T>(this T obj)
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| obj |  |
 
 ## See Also
 

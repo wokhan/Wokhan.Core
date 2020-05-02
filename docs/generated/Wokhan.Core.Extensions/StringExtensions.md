@@ -1,5 +1,7 @@
 # StringExtensions class
 
+String class extensions
+
 ```csharp
 public static class StringExtensions
 ```
@@ -8,8 +10,8 @@ public static class StringExtensions
 
 | name | description |
 | --- | --- |
-| static [ToPseudo](StringExtensions/ToPseudo.md)(…) |  |
-| static [Truncate](StringExtensions/Truncate.md)(…) |  |
+| static [ToPseudo](StringExtensions/ToPseudo.md)(…) | Turns a string into pseudo string (latin languages only). Helpful when translating UI to quickly see untranslated part. |
+| static [Truncate](StringExtensions/Truncate.md)(…) | Truncates a string to the specified max length (if needed) |
 
 ## See Also
 
