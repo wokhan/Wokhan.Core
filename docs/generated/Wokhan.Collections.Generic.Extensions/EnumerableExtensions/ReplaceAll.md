@@ -1,8 +1,16 @@
 # EnumerableExtensions.ReplaceAll&lt;T&gt; method
 
+Replaces all items it an ICollection source by the specified items.
+
 ```csharp
-public static void ReplaceAll<T>(this ObservableCollection<T> src, IEnumerable<T> all)
+public static void ReplaceAll<T>(this ICollection<T> src, IEnumerable<T> newItems)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Item type |
+| src | Source collection |
+| newItems | Items to add |
 
 ## See Also
 

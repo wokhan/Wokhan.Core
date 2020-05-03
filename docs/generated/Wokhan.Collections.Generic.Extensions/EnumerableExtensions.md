@@ -1,5 +1,7 @@
 # EnumerableExtensions class
 
+Extension methods for IEnumerable
+
 ```csharp
 public static class EnumerableExtensions
 ```
@@ -8,30 +10,28 @@ public static class EnumerableExtensions
 
 | name | description |
 | --- | --- |
-| static [AddAll&lt;T&gt;](EnumerableExtensions/AddAll.md)(…) |  |
-| static [ApplyToAll&lt;T&gt;](EnumerableExtensions/ApplyToAll.md)(…) |  |
-| static [AsDataTable](EnumerableExtensions/AsDataTable.md)(…) |  |
-| static [AsDataTable&lt;T&gt;](EnumerableExtensions/AsDataTable.md)(…) |  |
-| static [AsObjectCollection](EnumerableExtensions/AsObjectCollection.md)(…) |  |
-| static [AsObjectCollection&lt;T&gt;](EnumerableExtensions/AsObjectCollection.md)(…) |  |
-| static [AsParallel&lt;T&gt;](EnumerableExtensions/AsParallel.md)(…) |  |
-| static [AverageChecked&lt;T&gt;](EnumerableExtensions/AverageChecked.md)(…) |  |
-| static [GetInnerType](EnumerableExtensions/GetInnerType.md)(…) |  |
-| static [GetInnerType&lt;T&gt;](EnumerableExtensions/GetInnerType.md)(…) |  |
-| static [GreatestCommonDiv](EnumerableExtensions/GreatestCommonDiv.md)(…) |  |
-| static [Merge&lt;T&gt;](EnumerableExtensions/Merge.md)(…) |  (2 methods) |
-| static [OrderByAll](EnumerableExtensions/OrderByAll.md)(…) |  |
-| static [OrderByAll&lt;T&gt;](EnumerableExtensions/OrderByAll.md)(…) |  (2 methods) |
+| static [AddAll&lt;T&gt;](EnumerableExtensions/AddAll.md)(…) | Add all specified items to a collection using a simple loop |
+| static [ApplyToAll&lt;T&gt;](EnumerableExtensions/ApplyToAll.md)(…) | Applies an Action to all items in an enumeration, when enumerated. |
+| static [AsObjectCollection](EnumerableExtensions/AsObjectCollection.md)(…) | Turns a generic IEnumerable into an object[] enumeration (each property being mapped into the array) |
+| static [AsObjectCollection&lt;T&gt;](EnumerableExtensions/AsObjectCollection.md)(…) | Turns a generic IEnumerable into an object[] enumeration (each property being mapped into the array) |
+| static [AsParallel&lt;T&gt;](EnumerableExtensions/AsParallel.md)(…) | Shortcut to create a ParallelQuery, optionnally using only one thread (disabling in fact parallelism but keeping the same return type). Used in fluent queries. |
+| static [AverageChecked&lt;T&gt;](EnumerableExtensions/AverageChecked.md)(…) | Computes an average for all values in an enumerable, ensuring they can be converted to double (using a DoubleConverter). |
+| static [GetInnerType](EnumerableExtensions/GetInnerType.md)(…) | Returns the actual "inner" type of an element in a IEnumerable containing genericly typed items |
+| static [GetInnerType&lt;T&gt;](EnumerableExtensions/GetInnerType.md)(…) | Returns the actual "inner" type of an element in a collection when T is also a generic type |
+| static [GreatestCommonDiv](EnumerableExtensions/GreatestCommonDiv.md)(…) | Computes the greatest common divisor for an integer enumeration |
+| static [Merge&lt;T&gt;](EnumerableExtensions/Merge.md)(…) | Merges two enumerables using the specified comparer. Does use a Set (as defined in .Net reference source) internally to optimize merging. (2 methods) |
+| static [OrderByAll](EnumerableExtensions/OrderByAll.md)(…) | Sorts an untyped IQueryable by guessing the inner type, using [`OrderByAllTyped`](EnumerableExtensions/OrderByAllTyped.md) |
+| static [OrderByAll&lt;T&gt;](EnumerableExtensions/OrderByAll.md)(…) | Orders an IEnumerable which items are also IEnumerable by all it's inner enumeration values, optionnally skipping some (2 methods) |
 | static [OrderByAllTyped&lt;T&gt;](EnumerableExtensions/OrderByAllTyped.md)(…) |  |
-| static [OrderByMany&lt;T&gt;](EnumerableExtensions/OrderByMany.md)(…) |  (3 methods) |
-| static [OrderByManyTyped&lt;T&gt;](EnumerableExtensions/OrderByManyTyped.md)(…) |  |
-| static [Pivot&lt;T,TKeys,TPivoted,TAggregate&gt;](EnumerableExtensions/Pivot.md)(…) |  |
-| static [ReplaceAll&lt;T&gt;](EnumerableExtensions/ReplaceAll.md)(…) |  |
-| static [Select&lt;TResult&gt;](EnumerableExtensions/Select.md)(…) |  |
-| static [ToObject](EnumerableExtensions/ToObject.md)(…) |  |
-| static [ToObject&lt;T&gt;](EnumerableExtensions/ToObject.md)(…) |  (2 methods) |
-| static [ToPivotTable&lt;T,TColumn,TRow,TData&gt;](EnumerableExtensions/ToPivotTable.md)(…) |  |
-| static [WithProgress&lt;T&gt;](EnumerableExtensions/WithProgress.md)(…) |  (2 methods) |
+| static [OrderByMany&lt;T&gt;](EnumerableExtensions/OrderByMany.md)(…) | Orders an enumerable of T[] by multiple items (using indexes) (3 methods) |
+| static [Pivot&lt;T,TKeys,TPivoted,TAggregate&gt;](EnumerableExtensions/Pivot.md)(…) | Creates a pivot table (a table where columns are created from specified values in a collection) from a IEnumerable of *T*, using the specified selector and aggregators. |
+| static [ReplaceAll&lt;T&gt;](EnumerableExtensions/ReplaceAll.md)(…) | Replaces all items it an ICollection source by the specified items. |
+| static [ToDataTable](EnumerableExtensions/ToDataTable.md)(…) | Creates a DataTable from an IEnumerable of object[] with the specified columns. |
+| static [ToDataTable&lt;T&gt;](EnumerableExtensions/ToDataTable.md)(…) | Creates a DataTable from an IEnumerable, optionnally overriding the column headers. |
+| static [ToObject](EnumerableExtensions/ToObject.md)(…) | Turns a generic list of values to an object, mapping each list items to properties of the specified target type. |
+| static [ToObject&lt;T&gt;](EnumerableExtensions/ToObject.md)(…) | Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](EnumerableExtensions/ToObject.md) (2 methods) |
+| static [ToPivotTable&lt;T,TPivoted,TKeys,TAggregate&gt;](EnumerableExtensions/ToPivotTable.md)(…) | Creates a pivot table (a table where columns are created from specified values in a collection) from a IEnumerable of *T*, using the specified selector and aggregators. |
+| static [WithProgress&lt;T&gt;](EnumerableExtensions/WithProgress.md)(…) | Adds a progress callback to any enumeration, which will increment an internal counter when enumerating and call the specified callback. |
 
 ## See Also
 

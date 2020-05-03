@@ -1,6 +1,6 @@
 # DictionaryExtensions.Flatten method
 
-Flattens e dictionary (concatenating the keys using the specified separator, or "." if none.
+Flattens a dictionary (concatenating the keys using the specified separator, or "." if none.
 
 ```csharp
 public static IEnumerable<KeyValuePair<object, object>> Flatten(

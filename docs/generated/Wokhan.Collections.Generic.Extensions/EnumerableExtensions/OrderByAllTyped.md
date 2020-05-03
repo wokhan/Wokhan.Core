@@ -4,6 +4,12 @@
 public static IOrderedQueryable<T> OrderByAllTyped<T>(this IQueryable<T> src, int skip = 0)
 ```
 
+| parameter | description |
+| --- | --- |
+| T |  |
+| src |  |
+| skip |  |
+
 ## See Also
 
 * class [EnumerableExtensions](../EnumerableExtensions.md)

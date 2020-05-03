@@ -1,8 +1,20 @@
 # EnumerableExtensions.OrderByMany&lt;T&gt; method (1 of 3)
 
+Orders an enumerable of T[] by multiple items (using indexes)
+
 ```csharp
 public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> src, int[] indexes)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type (passed as arrays) |
+| src | Source collection |
+| indexes | Indexes to get elements at for ordering |
+
+## Return Value
+
+An ordered enumerable
 
 ## See Also
 
@@ -13,10 +25,19 @@ public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> src, 
 
 # EnumerableExtensions.OrderByMany&lt;T&gt; method (2 of 3)
 
+Orders an enumerable of T[] by the first "*take*" values of each array (optionnally skipping some)
+
 ```csharp
-public static IOrderedQueryable<T> OrderByMany<T>(this IQueryable<T> src, 
-    IEnumerable<string> sorters)
+public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> src, int take, 
+    int skip = 0)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Enumerable items type |
+| src | Source collection |
+| take | Number of values to take in the array for each item |
+| skip | Number of values to skip in the array for each item |
 
 ## See Also
 
@@ -27,10 +48,19 @@ public static IOrderedQueryable<T> OrderByMany<T>(this IQueryable<T> src,
 
 # EnumerableExtensions.OrderByMany&lt;T&gt; method (3 of 3)
 
+Orders a queryable of T[] by the first "*take*" values of each array (optionnally skipping some)
+
 ```csharp
-public static IOrderedEnumerable<T[]> OrderByMany<T>(this IEnumerable<T[]> src, int columnsToTake, 
+public static IOrderedQueryable<T[]> OrderByMany<T>(this IQueryable<T[]> src, int columnsToTake, 
     int columnsToSkip = 0)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Enumerable items type |
+| src | Source collection |
+| take | Number of values to take in the array for each item |
+| skip | Number of values to skip in the array for each item |
 
 ## See Also
 

@@ -1,8 +1,20 @@
 # EnumerableExtensions.AsParallel&lt;T&gt; method
 
+Shortcut to create a ParallelQuery, optionnally using only one thread (disabling in fact parallelism but keeping the same return type). Used in fluent queries.
+
 ```csharp
 public static ParallelQuery<T> AsParallel<T>(this IEnumerable<T> src, bool useParallelism)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source collection |
+| useParallelism | Indicates whether to actually use parallelism |
+
+## Return Value
+
+A parallel query with either 1 degree of parallelism (if disabled) or default one (if enabled)
 
 ## See Also
 

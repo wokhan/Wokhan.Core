@@ -10,8 +10,9 @@ public static class DynamicQueryableExtensions
 
 | name | description |
 | --- | --- |
-| static [AggregateBy](DynamicQueryableExtensions/AggregateBy.md)(…) | Performs multiple agregations dynamically, returning a queryable collection of dynamic objects which properties defined by the *members* list, along with new properties computed using *aggregateOperation*. |
+| static [AggregateBy](DynamicQueryableExtensions/AggregateBy.md)(…) | Performs multiple aggregations dynamically, returning a queryable collection of dynamic objects which properties defined by the *members* list, along with new properties computed using *aggregateOperation*. |
 | static [OrderByMany&lt;T&gt;](DynamicQueryableExtensions/OrderByMany.md)(…) | Orders a queryable by all specified sorters (passed as property names) |
+| static [Select&lt;TResult&gt;](DynamicQueryableExtensions/Select.md)(…) | Projects multiple values dynamically on a new object (of type TResult), as specified by the selectors. |
 
 ## See Also
 

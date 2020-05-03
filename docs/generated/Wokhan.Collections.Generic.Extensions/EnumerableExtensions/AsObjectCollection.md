@@ -1,9 +1,16 @@
 # EnumerableExtensions.AsObjectCollection method (1 of 2)
 
+Turns a generic IEnumerable into an object[] enumeration (each property being mapped into the array)
+
 ```csharp
 public static IEnumerable<object[]> AsObjectCollection(this IEnumerable src, 
-    params string[] attributes)
+    params string[] properties)
 ```
+
+| parameter | description |
+| --- | --- |
+| src | Source enumeration |
+| properties | Name of the properties to use to populate the array |
 
 ## See Also
 
@@ -14,10 +21,17 @@ public static IEnumerable<object[]> AsObjectCollection(this IEnumerable src,
 
 # EnumerableExtensions.AsObjectCollection&lt;T&gt; method (2 of 2)
 
+Turns a generic IEnumerable into an object[] enumeration (each property being mapped into the array)
+
 ```csharp
 public static IEnumerable<object[]> AsObjectCollection<T>(this IEnumerable<T> src, 
-    params string[] attributes)
+    params string[] properties)
 ```
+
+| parameter | description |
+| --- | --- |
+| src | Source enumeration |
+| properties | Name of the properties to use to populate the array |
 
 ## See Also
 

@@ -1,8 +1,16 @@
 # EnumerableExtensions.AddAll&lt;T&gt; method
 
+Add all specified items to a collection using a simple loop
+
 ```csharp
-public static void AddAll<T>(this ICollection<T> src, IEnumerable<T> all)
+public static void AddAll<T>(this ICollection<T> src, IEnumerable<T> newItems)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source collection |
+| newItems | Items to add |
 
 ## See Also
 

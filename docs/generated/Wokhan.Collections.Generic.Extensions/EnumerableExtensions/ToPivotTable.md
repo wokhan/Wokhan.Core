@@ -1,10 +1,28 @@
-# EnumerableExtensions.ToPivotTable&lt;T,TColumn,TRow,TData&gt; method
+# EnumerableExtensions.ToPivotTable&lt;T,TPivoted,TKeys,TAggregate&gt; method
+
+Creates a pivot table (a table where columns are created from specified values in a collection) from a IEnumerable of *T*, using the specified selector and aggregators.
 
 ```csharp
-public static DataTable ToPivotTable<T, TColumn, TRow, TData>(this IEnumerable<T> src, 
-    Expression<Func<T, TRow>> keysSelector, Expression<Func<T, TColumn>> pivotSelectorExpr, 
-    Func<IEnumerable<T>, TData> aggregateSelector, string tableName = "Default")
+Example to be added soon
 ```
+
+```csharp
+public static DataTable ToPivotTable<T, TPivoted, TKeys, TAggregate>(this IEnumerable<T> src, 
+    Expression<Func<T, TKeys>> keysSelector, Expression<Func<T, TPivoted>> pivotSelectorExpr, 
+    Func<IEnumerable<T>, TAggregate> aggregateSelector, string tableName = "Default")
+```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| TPivoted | Type of the pivoted data |
+| TKeys | Type of the keys |
+| TAggregate | Type of computed aggregated data for each pivot |
+| src | Source collection |
+| keysSelector | Keys selector (used as keys for the groups aggregation for pivoted values will be computed on) |
+| pivotSelectorExpr | Expression to get the properties to compute the pivot on |
+| aggregateSelector | Aggregation calculation method |
+| tableName | Name of the created table |
 
 ## See Also
 

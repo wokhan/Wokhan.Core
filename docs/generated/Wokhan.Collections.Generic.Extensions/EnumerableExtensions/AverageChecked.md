@@ -1,9 +1,21 @@
 # EnumerableExtensions.AverageChecked&lt;T&gt; method
 
+Computes an average for all values in an enumerable, ensuring they can be converted to double (using a DoubleConverter).
+
 ```csharp
 public static double AverageChecked<T>(this IEnumerable<T> src, bool ignoreErrors = false)
     where T : IConvertible
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+| ignoreErrors | Specify whether errors are blocking |
+
+## Return Value
+
+The computed average
 
 ## See Also
 
