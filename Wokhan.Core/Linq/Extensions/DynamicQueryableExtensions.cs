@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -31,13 +32,13 @@ namespace Wokhan.Linq.Extensions
         }
         
         /// <summary>
-        /// Performs multiple agregations dynamically, returning a queryable collection of dynamic objects which 
+        /// Performs multiple aggregations dynamically, returning a queryable collection of dynamic objects which 
         /// properties defined by the <paramref name="members"/> list, 
         /// along with new properties computed using <paramref name="aggregateOperation"/>.
         /// </summary>
         /// <param name="src">Source IQueryable</param>
         /// <param name="members">Names of the properties to keep from initial object type</param>
-        /// <param name="aggregateOperation">Pair of property name and agregate formula (as defined for System.Linq.Dynamic library)</param>
+        /// <param name="aggregateOperation">Pair of property name and aggregate formula (as defined for System.Linq.Dynamic library)</param>
         /// <returns>Projected IQueryable with item types matching the dynamically constructed type as defined by passed parameters</returns>
         public static IQueryable AggregateBy(this IQueryable src, IList<string> members, IDictionary<string, string> aggregateOperation)
         {
@@ -50,5 +51,23 @@ namespace Wokhan.Linq.Extensions
             return src;
         }
 
+        /// <summary>
+        /// Projects multiple values dynamically on a new object (of type TResult), as specified by the selectors.
+        /// </summary>
+        /// <typeparam name="TResult">Returned object type</typeparam>
+        /// <param name="src">Source queryable</param>
+        /// <param name="selectors">List of all selectors (as strings)</param>
+        /// <returns></returns>
+        public static IQueryable<TResult> Select<TResult>(this IQueryable src, IEnumerable<string> selectors)
+        {
+            Contract.Requires(src != null);
+
+            if (typeof(TResult) == typeof(object))
+            {
+                //var config = new ParsingConfig() { UseDynamicObjectClassForAnonymousTypes = true };
+                return src.Select($"new({string.Join(",", selectors)})").Cast<TResult>();
+            }
+            return src.Select<TResult>($"new({string.Join(",", selectors)})");
+        }
     }
 }

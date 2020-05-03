@@ -21,7 +21,7 @@ namespace Wokhan.Collections.Generic.Extensions
         }
 
         /// <summary>
-        /// Flattens e dictionary (concatenating the keys using the specified separator, or "." if none.
+        /// Flattens a dictionary (concatenating the keys using the specified separator, or "." if none.
         /// </summary>
         /// <param name="src">Source Dictionary (as a <see cref="IEnumerable{T}"/>)</param>
         /// <param name="parentKey">Initial key</param>
