@@ -41,6 +41,12 @@
 | --- | --- |
 | class [NotifierHelper](Wokhan.Core.ComponentModel/NotifierHelper.md) | Simple helper to avoid implementing INotifyPropertyChanged every time. |
 
+## Wokhan.Core.Core namespace
+
+| public type | description |
+| --- | --- |
+| static class [UnitFormatter](Wokhan.Core.Core/UnitFormatter.md) |  |
+
 ## Wokhan.Core.Extensions namespace
 
 | public type | description |
