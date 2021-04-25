@@ -1,8 +1,19 @@
 # EnumerableExtensions.GetInnerType method (1 of 2)
 
+Returns the actual "inner" type of an element in a IEnumerable containing genericly typed items
+
 ```csharp
 public static Type GetInnerType(this IEnumerable src)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+
+## Return Value
+
+The "inner" type for items of generic types
 
 ## See Also
 
@@ -13,9 +24,20 @@ public static Type GetInnerType(this IEnumerable src)
 
 # EnumerableExtensions.GetInnerType&lt;T&gt; method (2 of 2)
 
+Returns the actual "inner" type of an element in a collection when T is also a generic type
+
 ```csharp
 public static Type GetInnerType<T>(this IEnumerable<T> src)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+
+## Return Value
+
+The "inner" type for items of generic types
 
 ## See Also
 

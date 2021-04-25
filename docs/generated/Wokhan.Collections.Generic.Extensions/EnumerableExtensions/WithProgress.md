@@ -1,23 +1,16 @@
-# EnumerableExtensions.WithProgress&lt;T&gt; method (1 of 2)
+# EnumerableExtensions.WithProgress&lt;T&gt; method
+
+Adds a progress callback to any enumeration, which will increment an internal counter when enumerating and call the specified callback.
 
 ```csharp
 public static IEnumerable<T> WithProgress<T>(this IEnumerable<T> src, Action<double> callback)
 ```
 
-## See Also
-
-* class [EnumerableExtensions](../EnumerableExtensions.md)
-* namespace [Wokhan.Collections.Generic.Extensions](../../Wokhan.Core.md)
-
----
-
-# EnumerableExtensions.WithProgress&lt;T&gt; method (2 of 2)
-
-```csharp
-public static IEnumerable<T> WithProgress<T>(this IEnumerable<T> src, 
-    Func<T, string> captionGetter, Action<string, double, double> callback = null, 
-    double? max = null)
-```
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source collection |
+| callback | Callback taking the current increment value as parameter |
 
 ## See Also
 

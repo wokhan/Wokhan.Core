@@ -21,7 +21,7 @@
 | --- | --- |
 | static class [CollectionsExtensions](Wokhan.Collections.Generic.Extensions/CollectionsExtensions.md) | Extensions for System.Collections.Generic types |
 | static class [DictionaryExtensions](Wokhan.Collections.Generic.Extensions/DictionaryExtensions.md) |  |
-| static class [EnumerableExtensions](Wokhan.Collections.Generic.Extensions/EnumerableExtensions.md) |  |
+| static class [EnumerableExtensions](Wokhan.Collections.Generic.Extensions/EnumerableExtensions.md) | Extension methods for IEnumerable |
 
 ## Wokhan.ComponentModel.Extensions namespace
 

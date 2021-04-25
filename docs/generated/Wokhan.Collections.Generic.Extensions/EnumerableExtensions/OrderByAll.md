@@ -1,8 +1,14 @@
 # EnumerableExtensions.OrderByAll method (1 of 3)
 
+Sorts an untyped IQueryable by guessing the inner type, using [`OrderByAllTyped`](OrderByAllTyped.md)
+
 ```csharp
 public static IOrderedQueryable<object> OrderByAll(this IQueryable src)
 ```
+
+| parameter | description |
+| --- | --- |
+| src | Source collection |
 
 ## See Also
 
@@ -13,10 +19,18 @@ public static IOrderedQueryable<object> OrderByAll(this IQueryable src)
 
 # EnumerableExtensions.OrderByAll&lt;T&gt; method (2 of 3)
 
+Orders an IEnumerable which items are also IEnumerable by all it's inner enumeration values, optionnally skipping some
+
 ```csharp
 public static IOrderedEnumerable<T[]> OrderByAll<T>(this IEnumerable<IEnumerable<T>> src, 
     int skip = 0)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Inner enumerable items type |
+| src | Source collection |
+| skip | Number of items to skip in the inner enumerable used for sorting |
 
 ## See Also
 
@@ -27,9 +41,17 @@ public static IOrderedEnumerable<T[]> OrderByAll<T>(this IEnumerable<IEnumerable
 
 # EnumerableExtensions.OrderByAll&lt;T&gt; method (3 of 3)
 
+Orders an IEnumerable using all fields of the T type
+
 ```csharp
 public static IOrderedEnumerable<T> OrderByAll<T>(this IEnumerable<T> src, int skip = 0)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Inner enumerable items type |
+| src | Source collection |
+| skip | Number of fields to ignore when sorting |
 
 ## See Also
 

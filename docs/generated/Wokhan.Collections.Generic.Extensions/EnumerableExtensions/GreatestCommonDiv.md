@@ -1,8 +1,18 @@
 # EnumerableExtensions.GreatestCommonDiv method
 
+Computes the greatest common divisor for an integer enumeration
+
 ```csharp
 public static int GreatestCommonDiv(this IEnumerable<int> src)
 ```
+
+| parameter | description |
+| --- | --- |
+| src | Source collection |
+
+## Return Value
+
+The greatest common divisor for all items
 
 ## See Also
 

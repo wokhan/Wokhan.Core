@@ -1,9 +1,22 @@
 # EnumerableExtensions.Merge&lt;T&gt; method (1 of 2)
 
+Merges two enumerables using the specified comparison predicate (the predicate returns the property or value to compare on, using [`GenericComparer`](../../Wokhan.Core.Comparers/GenericComparer-1.md)).
+
 ```csharp
-public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T> added, 
+public static IEnumerable<T> Merge<T>(this IEnumerable<T> src, IEnumerable<T> added, 
     Func<T, object> predicate)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source collection |
+| added | Collection to merge the source with |
+| predicate | Predicate to obtain the property to compare on |
+
+## Return Value
+
+Merged enumeration
 
 ## See Also
 
@@ -14,10 +27,23 @@ public static IEnumerable<T> Merge<T>(this IEnumerable<T> source, IEnumerable<T>
 
 # EnumerableExtensions.Merge&lt;T&gt; method (2 of 2)
 
+Merges two enumerables using the specified comparer. Does use a Set (as defined in .Net reference source) internally to optimize merging.
+
 ```csharp
 public static IEnumerable<T> Merge<T>(this IEnumerable<T> src, IEnumerable<T> added, 
     IEqualityComparer<T> comparer)
 ```
+
+| parameter | description |
+| --- | --- |
+| T |  |
+| src | Source collection |
+| added | Collection to merge the source with |
+| comparer | Equality comparer |
+
+## Return Value
+
+Merged enumeration
 
 ## See Also
 

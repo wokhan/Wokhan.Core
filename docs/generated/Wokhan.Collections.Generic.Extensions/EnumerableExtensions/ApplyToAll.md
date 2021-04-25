@@ -1,8 +1,20 @@
 # EnumerableExtensions.ApplyToAll&lt;T&gt; method
 
+Applies an Action to all items in an enumeration, when enumerated.
+
 ```csharp
 public static IEnumerable<T> ApplyToAll<T>(this IEnumerable<T> src, Action<T> action)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | Items type |
+| src | Source enumeration |
+| action | The action to perform on each items |
+
+## Return Value
+
+Original enumeration with items modified or used by the specified action
 
 ## See Also
 
