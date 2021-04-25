@@ -2,31 +2,53 @@ name: .NET Core
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags: [ 'v*' ]
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
+
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
+    
+    - name: Extract version from tag
+      uses: Amadevus/pwsh-script@v2.0.1
+      id: getVersion
+      with:
+        script: '("${{ steps.tag.outputs.tag }}").Split("v")[1]'
+
     - name: Install dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --configuration Release --no-restore
+
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+
     - name: Generate documentation (retrieve global tool)
       run: dotnet tool install xmldocmd -g
+
     - name: Generate documentation (generate)
       run: xmldocmd Wokhan.Core/bin/Release/netcoreapp3.0/Wokhan.Core.dll docs/generated --source https://github.com/${{ github.repository }} --clean
+
     - name: Generate documentation (commit)
       uses: EndBug/add-and-commit@v4.1.0
       with:
         add: docs
         message: Automated documentation update
+
+    - name: Pack
+      run: dotnet pack --no-build --no-restore --output Wokhan.Core/bin/Release/
+
+    - name: Publish
+      run: dotnet nuget push Wokhan.Core/bin/Release/Wokhan.Core.${{ steps.getVersion.outputs.result }}.nupkg --api-key ${{ secrets.nuget_apikey }} --source https://api.nuget.org/v3/index.json
