@@ -8,8 +8,8 @@ public static string Truncate(this string str, int maxLen)
 
 | parameter | description |
 | --- | --- |
-| source | Source string |
-| maxlength | Maximum length to truncate the string at |
+| str | Source string |
+| maxLen | Maximum length to truncate the string at |
 
 ## See Also
 

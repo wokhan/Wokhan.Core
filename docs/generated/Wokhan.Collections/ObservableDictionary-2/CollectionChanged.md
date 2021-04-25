@@ -1,7 +1,7 @@
 # ObservableDictionary&lt;TKey,TValue&gt;.CollectionChanged event
 
 ```csharp
-public event NotifyCollectionChangedEventHandler CollectionChanged;
+public event NotifyCollectionChangedEventHandler? CollectionChanged;
 ```
 
 ## See Also
