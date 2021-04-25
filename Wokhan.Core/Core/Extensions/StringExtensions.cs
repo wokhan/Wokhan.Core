@@ -9,74 +9,77 @@ namespace Wokhan.Core.Extensions
     /// </summary>
     public static class StringExtensions
     {
-
-
         /// <summary>
         /// Truncates a string to the specified max length (if needed)
         /// </summary>
-        /// <param name="source">Source string</param>
-        /// <param name="maxlength">Maximum length to truncate the string at</param>
+        /// <param name="str">Source string</param>
+        /// <param name="maxLen">Maximum length to truncate the string at</param>
         /// <returns></returns>
         public static string Truncate(this string str, int maxLen)
         {
+            if (str == null)
+            {
+                return null;
+            }
             return str.Length > maxLen ? str.Substring(0, maxLen) : str;
         }
 
 
-        private static readonly Dictionary<char, char> PseudoChars = new Dictionary<char, char>
+        private static readonly char[] PseudoChars = new []
         {
-            ['a'] = 'á',
-            ['b'] = 'β',
-            ['c'] = 'ç',
-            ['d'] = 'δ',
-            ['e'] = 'è',
-            ['f'] = 'ƒ',
-            ['g'] = 'ϱ',
-            ['h'] = 'λ',
-            ['i'] = 'ï',
-            ['j'] = 'J',
-            ['k'] = 'ƙ',
-            ['l'] = 'ℓ',
-            ['m'] = '₥',
-            ['n'] = 'ñ',
-            ['o'] = 'ô',
-            ['p'] = 'ƥ',
-            ['q'] = '9',
-            ['r'] = 'ř',
-            ['s'] = 'ƨ',
-            ['t'] = 'ƭ',
-            ['u'] = 'ú',
-            ['v'] = 'Ʋ',
-            ['w'] = 'ω',
-            ['x'] = 'ж',
-            ['y'] = '¥',
-            ['z'] = 'ƺ',
-            ['A'] = 'Â',
-            ['B'] = 'ß',
-            ['C'] = 'Ç',
-            ['D'] = 'Ð',
-            ['E'] = 'É',
-            ['F'] = 'F',
-            ['G'] = 'G',
-            ['H'] = 'H',
-            ['I'] = 'Ì',
-            ['J'] = 'J',
-            ['K'] = 'K',
-            ['L'] = '£',
-            ['M'] = 'M',
-            ['N'] = 'N',
-            ['O'] = 'Ó',
-            ['P'] = 'Þ',
-            ['Q'] = 'Q',
-            ['R'] = 'R',
-            ['S'] = '§',
-            ['T'] = 'T',
-            ['U'] = 'Û',
-            ['V'] = 'V',
-            ['W'] = 'W',
-            ['X'] = 'X',
-            ['Y'] = 'Ý',
-            ['Z'] = 'Z'
+            'Â',
+            'ß',
+            'Ç',
+            'Ð',
+            'É',
+            'F',
+            'G',
+            'H',
+            'Ì',
+            'J',
+            'K',
+            '£',
+            'M',
+            'N',
+            'Ó',
+            'Þ',
+            'Q',
+            'R',
+            '§',
+            'T',
+            'Û',
+            'V',
+            'W',
+            'X',
+            'Ý',
+            'Z',
+            '?', '?', '?', '?', '?', '?',
+            'á',
+            'β',
+            'ç',
+            'δ',
+            'è',
+            'ƒ',
+            'ϱ',
+            'λ',
+            'ï',
+            'J',
+            'ƙ',
+            'ℓ',
+            '₥',
+            'ñ',
+            'ô',
+            'ƥ',
+            '9',
+            'ř',
+            'ƨ',
+            'ƭ',
+            'ú',
+            'Ʋ',
+            'ω',
+            'ж',
+            '¥',
+            'ƺ',
         };
 
         /// <summary>
@@ -95,7 +98,7 @@ namespace Wokhan.Core.Extensions
                 return null;
             }
 
-            return new String(src.Select(x => PseudoChars.TryGetValue(x, out var r) ? r : x).ToArray());
+            return new String(src.Select(x => x - 'A' > 0 && PseudoChars.Length > x - 'A' ? PseudoChars[x - 'A'] : '?').ToArray());
         }
     }
 
