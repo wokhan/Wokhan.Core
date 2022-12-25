@@ -1,18 +1,51 @@
-using NUnit.Framework;
-using System;
+﻿using Xunit;
 using Wokhan.Core.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Wokhan.Collections.Generic.Extensions;
 
-namespace Wokhan.Core.Tests
+namespace Wokhan.Core.Extensions.Tests
 {
     public class ObjectExtensionsTests
     {
-        [SetUp]
-        public void Setup()
+        [Fact()]
+        public void AsArrayTest()
         {
+            var result = ObjectExtensions.AsArray("whatever");
             
+            Assert.Single(result);
+            Assert.Equal("whatever", result[0]);
         }
 
-        [Test]
+        [Fact()]
+        public void GetValueFromPathTest()
+        {
+            var result = ObjectExtensions.GetValueFromPath(new { P1 = new { P2 = new { P3 = "Here" } } }, "P1.P2.P3");
+
+            Assert.Equal("Here", result);
+        }
+
+        [Fact()]
+        public void SafeConvertTest()
+        {
+            var result = ObjectExtensions.SafeConvert("2", typeof(double));
+            Assert.Equal(2.0, result);
+
+            result = ObjectExtensions.SafeConvert("", typeof(double));
+            Assert.Null(result);
+
+            result = ObjectExtensions.SafeConvert(null, typeof(double));
+            Assert.Null(result);
+
+            result = ObjectExtensions.SafeConvert(DBNull.Value, typeof(double));
+            Assert.Null(result);
+
+            result = ObjectExtensions.SafeConvert(DBNull.Value, typeof(double));
+            Assert.Null(result);
+        }
+
+        [Fact]
         public void CustomPropertyTest()
         {
             long memory;
@@ -20,13 +53,13 @@ namespace Wokhan.Core.Tests
             // Defining a zone for x not to exist outside of it
             {
                 var x = new object();
-                
+
                 x.SetCustomProperty("test", 1);
-                Assert.AreEqual(x.GetCustomProperty<int>("test"), 1);
+                Assert.Equal(1, x.GetCustomProperty<int>("test"));
                 memory = GetAndLogMemoryUse();
 
                 x.SetCustomProperty("test", 2);
-                Assert.AreEqual(x.GetCustomProperty<int>("test"), 2);
+                Assert.Equal(2, x.GetCustomProperty<int>("test"));
                 memory = GetAndLogMemoryUse();
 
                 var tt = new byte[80000];

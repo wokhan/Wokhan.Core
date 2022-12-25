@@ -1,26 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget">
-    <Authors>Jérôme Saliba (Khan / wokhan@github)</Authors>
-    <Description>.NET Standard 2.0 / Core 3.0 extensions and useful classes by Wokhan Solutions.</Description>
-    <PackageProjectUrl>https://github.com/wokhansoft/Wokhan.Core</PackageProjectUrl>
+    <PackageId>Wokhan.Core</PackageId>
     <PackageIcon>logo.png</PackageIcon>
-    <Copyright>Wokhan Solutions 2020</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>Please check GitHub repository for details.</PackageReleaseNotes>
-    <Company>Wokhan Solutions</Company>
     <PackageTags>.NETCore .NET Extensions Linq</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/wokhansoft/Wokhan.Core</PackageProjectUrl>
+    <PackageReleaseNotes>Please check GitHub repository for details.</PackageReleaseNotes>
+    <Description>.NET Standard 2.0 / Core 3.0 extensions and useful classes by Wokhan Solutions.</Description>
+    <Authors>Jérôme Saliba (Khan / wokhan@github)</Authors>
+    <Copyright>Wokhan Solutions 2020</Copyright>
+    <Company>Wokhan Solutions</Company>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.9" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.24" />
   </ItemGroup>
 
   <ItemGroup>

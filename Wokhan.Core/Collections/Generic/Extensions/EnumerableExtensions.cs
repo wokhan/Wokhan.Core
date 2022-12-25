@@ -331,7 +331,8 @@ namespace Wokhan.Collections.Generic.Extensions
         }
 
         /// <summary>
-        /// Orders an <see cref="IEnumerable{T}"/> using all fields of the T type
+        /// Orders an <see cref="IEnumerable{T}"/> using all fields of the T type.
+        /// Note: if T implements IComparable, this method will return the ordered value with OrderBy
         /// </summary>
         /// <typeparam name="T">Inner enumerable items type</typeparam>
         /// <param name="src">Source collection</param>
@@ -341,9 +342,14 @@ namespace Wokhan.Collections.Generic.Extensions
         {
             Contract.Requires(src != null);
 
-            var allmembers = typeof(T).GetFields().Where(m => typeof(IComparable).IsAssignableFrom(m.FieldType)).ToArray();
+            if (typeof(IComparable).IsAssignableFrom(typeof(T)))
+            {
+                return src.OrderBy(_ => _);
+            }
+
+            var allmembers = typeof(T).GetProperties().Where(m => typeof(IComparable).IsAssignableFrom(m.PropertyType)).ToArray();
             IOrderedEnumerable<T> ret = src.OrderBy(m => allmembers[skip].GetValue(m));
-            for (int i = 1 + skip; i < allmembers.Length - 1; i++)
+            for (int i = 1 + skip; i < allmembers.Length; i++)
             {
                 var ic = i;
                 ret = ret.ThenBy(a => allmembers[ic].GetValue(a));
