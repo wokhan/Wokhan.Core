@@ -22,8 +22,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
-    - name: Test
-      run: dotnet test --configuration Release --no-build --no-restore --verbosity normal
+    #- name: Test
+    #  run: dotnet test --configuration Release --no-build --no-restore --verbosity normal
 
     - name: Generate documentation (retrieve global tool)
       run: dotnet tool install xmldocmd -g
