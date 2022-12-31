@@ -14,7 +14,7 @@ I've used this library for years and am still modifying it when I need something
 
 The library is available on Nuget. 
 
-![Nuget](https://img.shields.io/nuget/v/Wokhan.Core)
+[![Nuget](https://img.shields.io/nuget/v/Wokhan.Core)](https://www.nuget.org/packages/Wokhan.Core) 
 
 # 📒 Documentation 
 Please check [the generated documentation](docs/generated/Wokhan.Core.md) to get a glimpse at what this library does.
