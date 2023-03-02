@@ -16,9 +16,9 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/wokhan/Wokhan.Core</PackageProjectUrl>
     <PackageReleaseNotes>Please check GitHub repository for details.</PackageReleaseNotes>
-    <Description>.NET Standard 2.0 / Core 3.0 extensions and useful classes by Wokhan Solutions.</Description>
+    <Description>.NET Standard 2.0 / .NET 6.0 extensions and useful classes by Wokhan Solutions.</Description>
     <Authors>Jérôme Saliba (Khan / wokhan@github)</Authors>
-    <Copyright>Wokhan Solutions 2020</Copyright>
+    <Copyright>Wokhan Solutions 2020-2023</Copyright>
     <Company>Wokhan Solutions</Company>
   </PropertyGroup>
 
