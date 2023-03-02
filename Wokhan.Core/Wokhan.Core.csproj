@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget">
@@ -12,7 +14,7 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageTags>.NETCore .NET Extensions Linq</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/wokhansoft/Wokhan.Core</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/wokhan/Wokhan.Core</PackageProjectUrl>
     <PackageReleaseNotes>Please check GitHub repository for details.</PackageReleaseNotes>
     <Description>.NET Standard 2.0 / Core 3.0 extensions and useful classes by Wokhan Solutions.</Description>
     <Authors>Jérôme Saliba (Khan / wokhan@github)</Authors>
@@ -22,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.24" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
