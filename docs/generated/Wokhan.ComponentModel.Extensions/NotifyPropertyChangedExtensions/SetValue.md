@@ -13,7 +13,7 @@ public bool Loading
 
 ```csharp
 public static void SetValue<T>(this INotifyPropertyChanged src, ref T field, T value, 
-    Action<string> propertyChanged = null, [CallerMemberName] string propertyName = null)
+    Action<string>? propertyChanged = null, [CallerMemberName] string? propertyName = null)
 ```
 
 | parameter | description |

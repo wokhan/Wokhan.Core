@@ -3,7 +3,7 @@
 Adds an item to the list, optionnally inserting it at the position defined by the *orderBy* parameter.
 
 ```csharp
-public void Add(T item, Func<T, IComparable> orderBy = null)
+public void Add(T item, Func<T, IComparable>? orderBy = null)
 ```
 
 | parameter | description |

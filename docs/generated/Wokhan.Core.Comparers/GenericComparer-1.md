@@ -14,7 +14,7 @@ public class GenericComparer<T> : EqualityComparer<T>
 
 | name | description |
 | --- | --- |
-| [GenericComparer](GenericComparer-1/GenericComparer.md)(…) | Creates a new [`GenericComparer`](GenericComparer-1.md) using the specified key getter |
+| [GenericComparer](GenericComparer-1/GenericComparer.md)(…) | Creates a new [`GenericComparer`](./GenericComparer-1.md) using the specified key getter |
 | override [Equals](GenericComparer-1/Equals.md)(…) | Check two items keys (as retrieved by the key getter) for equality |
 | override [GetHashCode](GenericComparer-1/GetHashCode.md)(…) | Returns the hash code of the key as retrieved by the key getter method |
 

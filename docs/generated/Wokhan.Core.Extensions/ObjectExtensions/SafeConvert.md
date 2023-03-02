@@ -3,7 +3,7 @@
 Tries to convert an object to a target type, handling nulls, DBNull and empty strings.
 
 ```csharp
-public static object SafeConvert(this object o, Type targetType)
+public static object? SafeConvert(this object? o, Type targetType)
 ```
 
 | parameter | description |

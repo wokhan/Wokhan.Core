@@ -3,7 +3,7 @@
 Event invocation (injects the property name using CallerMemberNameAttribute when used in setters, no need for nameof operator)
 
 ```csharp
-protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+protected void NotifyPropertyChanged([CallerMemberName] string? propertyName = null)
 ```
 
 | parameter | description |

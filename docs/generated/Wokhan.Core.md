@@ -4,75 +4,75 @@
 
 | public type | description |
 | --- | --- |
-| class [GroupedObservableCollection&lt;TK,T&gt;](Wokhan.Collections/GroupedObservableCollection-2.md) | Custom observable collection with grouping abilities |
-| interface [IObservableGrouping&lt;T&gt;](Wokhan.Collections/IObservableGrouping-1.md) |  |
-| class [ObservableDictionary&lt;TKey,TValue&gt;](Wokhan.Collections/ObservableDictionary-2.md) | An observable variant of Dictionary. |
-| class [ObservableGrouping&lt;TK,T&gt;](Wokhan.Collections/ObservableGrouping-2.md) | IGrouping specialization used by [`GroupedObservableCollection`](Wokhan.Collections/GroupedObservableCollection-2.md) |
+| class [GroupedObservableCollection&lt;TK,T&gt;](./Wokhan.Collections/GroupedObservableCollection-2.md) | Custom observable collection with grouping abilities |
+| interface [IObservableGrouping&lt;T&gt;](./Wokhan.Collections/IObservableGrouping-1.md) |  |
+| class [ObservableDictionary&lt;TKey,TValue&gt;](./Wokhan.Collections/ObservableDictionary-2.md) | An observable variant of Dictionary. |
+| class [ObservableGrouping&lt;TK,T&gt;](./Wokhan.Collections/ObservableGrouping-2.md) | IGrouping specialization used by [`GroupedObservableCollection`](./Wokhan.Collections/GroupedObservableCollection-2.md) |
 
 ## Wokhan.Collections.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [DictionaryExtensions](Wokhan.Collections.Extensions/DictionaryExtensions.md) | Extensions methods for the Dictionary class. |
+| static class [DictionaryExtensions](./Wokhan.Collections.Extensions/DictionaryExtensions.md) | Extensions methods for the Dictionary class. |
 
 ## Wokhan.Collections.Generic.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [CollectionsExtensions](Wokhan.Collections.Generic.Extensions/CollectionsExtensions.md) | Extensions for System.Collections.Generic types |
-| static class [DictionaryExtensions](Wokhan.Collections.Generic.Extensions/DictionaryExtensions.md) |  |
-| static class [EnumerableExtensions](Wokhan.Collections.Generic.Extensions/EnumerableExtensions.md) | Extension methods for IEnumerable |
+| static class [CollectionsExtensions](./Wokhan.Collections.Generic.Extensions/CollectionsExtensions.md) | Extensions for System.Collections.Generic types |
+| static class [DictionaryExtensions](./Wokhan.Collections.Generic.Extensions/DictionaryExtensions.md) |  |
+| static class [EnumerableExtensions](./Wokhan.Collections.Generic.Extensions/EnumerableExtensions.md) | Extension methods for IEnumerable |
 
 ## Wokhan.ComponentModel.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [NotifyPropertyChangedExtensions](Wokhan.ComponentModel.Extensions/NotifyPropertyChangedExtensions.md) | Extensions for INotifyPropertyChanged implementers |
+| static class [NotifyPropertyChangedExtensions](./Wokhan.ComponentModel.Extensions/NotifyPropertyChangedExtensions.md) | Extensions for INotifyPropertyChanged implementers |
 
 ## Wokhan.Core.Comparers namespace
 
 | public type | description |
 | --- | --- |
-| class [GenericComparer&lt;T&gt;](Wokhan.Core.Comparers/GenericComparer-1.md) | Generic equality comparer, to quickly define custom comparer |
+| class [GenericComparer&lt;T&gt;](./Wokhan.Core.Comparers/GenericComparer-1.md) | Generic equality comparer, to quickly define custom comparer |
 
 ## Wokhan.Core.ComponentModel namespace
 
 | public type | description |
 | --- | --- |
-| class [NotifierHelper](Wokhan.Core.ComponentModel/NotifierHelper.md) | Simple helper to avoid implementing INotifyPropertyChanged every time. |
+| class [NotifierHelper](./Wokhan.Core.ComponentModel/NotifierHelper.md) | Simple helper to avoid implementing INotifyPropertyChanged every time. |
 
 ## Wokhan.Core.Core namespace
 
 | public type | description |
 | --- | --- |
-| static class [UnitFormatter](Wokhan.Core.Core/UnitFormatter.md) |  |
+| static class [UnitFormatter](./Wokhan.Core.Core/UnitFormatter.md) |  |
 
 ## Wokhan.Core.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [ObjectExtensions](Wokhan.Core.Extensions/ObjectExtensions.md) | Extensions for all objects |
-| static class [StringExtensions](Wokhan.Core.Extensions/StringExtensions.md) | String class extensions |
-| static class [TypeExtensions](Wokhan.Core.Extensions/TypeExtensions.md) | Type class extensions methods |
-| static class [ValueTupleExtensions](Wokhan.Core.Extensions/ValueTupleExtensions.md) | Extension methods for ValueTuples |
+| static class [ObjectExtensions](./Wokhan.Core.Extensions/ObjectExtensions.md) | Extensions for all objects |
+| static class [StringExtensions](./Wokhan.Core.Extensions/StringExtensions.md) | String class extensions |
+| static class [TypeExtensions](./Wokhan.Core.Extensions/TypeExtensions.md) | Type class extensions methods |
+| static class [ValueTupleExtensions](./Wokhan.Core.Extensions/ValueTupleExtensions.md) | Extension methods for ValueTuples |
 
 ## Wokhan.Data.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [DataRowExtensions](Wokhan.Data.Extensions/DataRowExtensions.md) | Extension methods for the DataRow type |
+| static class [DataRowExtensions](./Wokhan.Data.Extensions/DataRowExtensions.md) | Extension methods for the DataRow type |
 
 ## Wokhan.Linq.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [DynamicQueryableExtensions](Wokhan.Linq.Extensions/DynamicQueryableExtensions.md) | Extension methods for IQueryable objects (extending DynamicQueryableExtensions library) |
-| static class [ExpressionExtensions](Wokhan.Linq.Extensions/ExpressionExtensions.md) | Extension methods for Expression class |
+| static class [DynamicQueryableExtensions](./Wokhan.Linq.Extensions/DynamicQueryableExtensions.md) | Extension methods for IQueryable objects (extending DynamicQueryableExtensions library) |
+| static class [ExpressionExtensions](./Wokhan.Linq.Extensions/ExpressionExtensions.md) | Extension methods for Expression class |
 
 ## Wokhan.Threading.Extensions namespace
 
 | public type | description |
 | --- | --- |
-| static class [TaskExtensions](Wokhan.Threading.Extensions/TaskExtensions.md) | Extensions methods for the Task class. |
+| static class [TaskExtensions](./Wokhan.Threading.Extensions/TaskExtensions.md) | Extensions methods for the Task class. |
 
 <!-- DO NOT EDIT: generated by xmldocmd for Wokhan.Core.dll -->

@@ -21,7 +21,7 @@ public static object ToObject(this IList src, Type targetclass, string[] attribu
 
 # EnumerableExtensions.ToObject&lt;T&gt; method (2 of 3)
 
-Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](ToObject.md)
+Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](./ToObject.md)
 
 ```csharp
 public static T ToObject<T>(this IEnumerable src, string[] attributes)
@@ -41,7 +41,7 @@ public static T ToObject<T>(this IEnumerable src, string[] attributes)
 
 # EnumerableExtensions.ToObject&lt;T&gt; method (3 of 3)
 
-Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](ToObject.md)
+Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](./ToObject.md)
 
 ```csharp
 public static T ToObject<T>(this IList src, string[] attributes)
