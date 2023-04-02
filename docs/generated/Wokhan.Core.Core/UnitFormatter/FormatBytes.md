@@ -1,7 +1,7 @@
 # UnitFormatter.FormatBytes method
 
 ```csharp
-public static string FormatBytes(double size, string suffix = null)
+public static string FormatBytes(double size, string? suffix = null)
 ```
 
 ## See Also

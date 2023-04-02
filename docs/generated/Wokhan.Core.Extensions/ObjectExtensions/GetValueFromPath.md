@@ -7,7 +7,7 @@ myObject.GetValueFromPath("Property.PropertyProperty") returns myObject.Property
 ```
 
 ```csharp
-public static object GetValueFromPath(this object o, string path)
+public static object? GetValueFromPath(this object? o, string path)
 ```
 
 | parameter | description |

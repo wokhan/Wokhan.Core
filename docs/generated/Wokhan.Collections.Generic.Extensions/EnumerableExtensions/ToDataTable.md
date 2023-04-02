@@ -25,7 +25,7 @@ public static DataTable ToDataTable(this IEnumerable<object[]> src, DataColumn[]
 Creates a DataTable from an IEnumerable, optionnally overriding the column headers.
 
 ```csharp
-public static DataTable ToDataTable<T>(this IEnumerable<T> src, IList<string> headers = null, 
+public static DataTable ToDataTable<T>(this IEnumerable<T> src, IList<string>? headers = null, 
     string name = "Default")
 ```
 

@@ -3,7 +3,7 @@
 WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet. Retrieves an "attached" property for the source object The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks
 
 ```csharp
-public static T GetCustomProperty<T>(this object src, string key, T defaultIfNotFound = default)
+public static T? GetCustomProperty<T>(this object src, string key, T? defaultIfNotFound = default)
 ```
 
 | parameter | description |
@@ -11,6 +11,7 @@ public static T GetCustomProperty<T>(this object src, string key, T defaultIfNot
 | T |  |
 | src |  |
 | key |  |
+| defaultIfNotFound |  |
 
 ## See Also
 
