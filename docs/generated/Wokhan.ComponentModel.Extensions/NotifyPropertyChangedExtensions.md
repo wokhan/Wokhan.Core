@@ -10,6 +10,7 @@ public static class NotifyPropertyChangedExtensions
 
 | name | description |
 | --- | --- |
+| static [GetOrSetValueAsync&lt;T&gt;](NotifyPropertyChangedExtensions/GetOrSetValueAsync.md)(…) | Asynchronously retrieves a value and updates a backing field, calling the PropertyChanged handler when done. Allows to use lazy loading for costly operations in accessors, as follows: |
 | static [SetValue&lt;T&gt;](NotifyPropertyChangedExtensions/SetValue.md)(…) | Sets a value, taking care of the PropertyChangedEventHandler invocation if value did change. |
 
 ## See Also
