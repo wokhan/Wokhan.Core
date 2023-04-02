@@ -58,7 +58,7 @@ public static class NotifyPropertyChangedExtensions
     /// <param name="fieldName">For internal use (for reflection, based on the 'targetField' parameter)</param>
     /// <param name="propertyName">For internal use (for reflection, based on the 'targetField' parameter)</param>
     /// <returns></returns>
-    public static T? GetOrSetValueAsync<T>(INotifyPropertyChanged src, Func<Task<T>> resolveAsync, ref T targetField, Action<string>? propertyChanged = null, [CallerArgumentExpression(nameof(targetField))] string? fieldName = null, [CallerMemberName] string? propertyName = null)
+    public static T? GetOrSetValueAsync<T>(this INotifyPropertyChanged src, Func<Task<T>> resolveAsync, ref T targetField, Action<string>? propertyChanged = null, [CallerArgumentExpression(nameof(targetField))] string? fieldName = null, [CallerMemberName] string? propertyName = null)
     {
         // Dangerous code as it doesn't ensure field has been pinned in memory, resulting in memory violations.
         // Keeping it in case someone has an idea.
