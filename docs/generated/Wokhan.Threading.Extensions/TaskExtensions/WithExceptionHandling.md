@@ -4,7 +4,7 @@ Allows to handle exceptions in a LINQ async enumeration (invoking the given *act
 
 ```csharp
 public static IEnumerable<Task<T>> WithExceptionHandling<T>(this IEnumerable<Task<T>> src, 
-    Action<Exception> action = null)
+    Action<Exception>? action = null)
     where T : class
 ```
 

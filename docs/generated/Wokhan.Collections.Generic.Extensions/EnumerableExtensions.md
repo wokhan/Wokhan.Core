@@ -20,7 +20,7 @@ public static class EnumerableExtensions
 | static [GetInnerType&lt;T&gt;](EnumerableExtensions/GetInnerType.md)(…) | Returns the actual "inner" type of an element in a collection when T is also a generic type |
 | static [GreatestCommonDiv](EnumerableExtensions/GreatestCommonDiv.md)(…) | Computes the greatest common divisor for an integer enumeration |
 | static [Merge&lt;T&gt;](EnumerableExtensions/Merge.md)(…) | Merges two enumerables using the specified comparer. Does use a Set (as defined in .Net reference source) internally to optimize merging. (2 methods) |
-| static [OrderByAll](EnumerableExtensions/OrderByAll.md)(…) | Sorts an untyped IQueryable by guessing the inner type, using [`OrderByAllTyped`](EnumerableExtensions/OrderByAllTyped.md) |
+| static [OrderByAll](EnumerableExtensions/OrderByAll.md)(…) | Sorts an untyped IQueryable by guessing the inner type, using [`OrderByAllTyped`](./EnumerableExtensions/OrderByAllTyped.md) |
 | static [OrderByAll&lt;T&gt;](EnumerableExtensions/OrderByAll.md)(…) | Orders an IEnumerable which items are also IEnumerable by all it's inner enumeration values, optionnally skipping some (2 methods) |
 | static [OrderByAllTyped&lt;T&gt;](EnumerableExtensions/OrderByAllTyped.md)(…) |  |
 | static [OrderByMany&lt;T&gt;](EnumerableExtensions/OrderByMany.md)(…) | Orders an enumerable of T[] by multiple items (using indexes) (3 methods) |
@@ -29,7 +29,7 @@ public static class EnumerableExtensions
 | static [ToDataTable](EnumerableExtensions/ToDataTable.md)(…) | Creates a DataTable from an IEnumerable of object[] with the specified columns. |
 | static [ToDataTable&lt;T&gt;](EnumerableExtensions/ToDataTable.md)(…) | Creates a DataTable from an IEnumerable, optionnally overriding the column headers. |
 | static [ToObject](EnumerableExtensions/ToObject.md)(…) | Turns a generic list of values to an object, mapping each list items to properties of the specified target type. |
-| static [ToObject&lt;T&gt;](EnumerableExtensions/ToObject.md)(…) | Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](EnumerableExtensions/ToObject.md) (2 methods) |
+| static [ToObject&lt;T&gt;](EnumerableExtensions/ToObject.md)(…) | Turns a generic list of values to an object, mapping each list items to properties of the specified target type. Uses [`ToObject`](./EnumerableExtensions/ToObject.md) (2 methods) |
 | static [ToPivotTable&lt;T,TPivoted,TKeys,TAggregate&gt;](EnumerableExtensions/ToPivotTable.md)(…) | Creates a pivot table (a table where columns are created from specified values in a collection) from a IEnumerable of *T*, using the specified selector and aggregators. |
 | static [WithProgress&lt;T&gt;](EnumerableExtensions/WithProgress.md)(…) | Adds a progress callback to any enumeration, which will increment an internal counter when enumerating and call the specified callback. |
 

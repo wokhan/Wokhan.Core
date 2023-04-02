@@ -1,6 +1,6 @@
 # EnumerableExtensions.OrderByAll method (1 of 3)
 
-Sorts an untyped IQueryable by guessing the inner type, using [`OrderByAllTyped`](OrderByAllTyped.md)
+Sorts an untyped IQueryable by guessing the inner type, using [`OrderByAllTyped`](./OrderByAllTyped.md)
 
 ```csharp
 public static IOrderedQueryable<object> OrderByAll(this IQueryable src)
@@ -41,7 +41,7 @@ public static IOrderedEnumerable<T[]> OrderByAll<T>(this IEnumerable<IEnumerable
 
 # EnumerableExtensions.OrderByAll&lt;T&gt; method (3 of 3)
 
-Orders an IEnumerable using all fields of the T type
+Orders an IEnumerable using all fields of the T type. Note: if T implements IComparable, this method will return the ordered value with OrderBy
 
 ```csharp
 public static IOrderedEnumerable<T> OrderByAll<T>(this IEnumerable<T> src, int skip = 0)
