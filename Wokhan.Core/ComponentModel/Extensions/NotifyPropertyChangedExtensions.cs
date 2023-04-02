@@ -58,7 +58,7 @@ public static class NotifyPropertyChangedExtensions
     /// <param name="fieldName">For internal use (for reflection, based on the 'targetField' parameter)</param>
     /// <param name="propertyName">For internal use (for reflection, based on the 'targetField' parameter)</param>
     /// <returns></returns>
-    public unsafe static T? GetOrSetValueAsync<T>(this INotifyPropertyChanged src, Func<Task<T>> resolveAsync, ref T targetField, Action<string>? propertyChanged = null, [CallerArgumentExpression(nameof(targetField))] string? fieldName = null, [CallerMemberName] string? propertyName = null)
+    public static T? GetOrSetValueAsync<T>(INotifyPropertyChanged src, Func<Task<T>> resolveAsync, ref T targetField, Action<string>? propertyChanged = null, [CallerArgumentExpression(nameof(targetField))] string? fieldName = null, [CallerMemberName] string? propertyName = null)
     {
         // Dangerous code as it doesn't ensure field has been pinned in memory, resulting in memory violations.
         // Keeping it in case someone has an idea.
@@ -77,18 +77,30 @@ public static class NotifyPropertyChangedExtensions
 
         //return field;
 
-
-        fieldName ??= $"<{propertyName}>k_BackingField"; // TODO: check how this is generated. Could be broken with some .NET future implementations.
-        var fieldInfo = src.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
-        if (fieldInfo is null)
-        {
-            throw new ArgumentOutOfRangeException(fieldName);
-        }
+        // Only compute the value if the target (backing) field is null
         if (targetField is null)
         {
+            // TODO: check how this is generated. Could be broken with some .NET future implementations.
+            fieldName ??= $"<{propertyName}>k_BackingField";
+
+            FieldInfo? fieldInfo = null;
+            var type = src.GetType();
+            // Loop over all inherited types if the property cannot be found on the current one
+            while (fieldInfo is null && type is not null)
+            {
+                fieldInfo = type.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+                type = type.BaseType;
+            }
+
+            if (fieldInfo is null)
+            {
+                throw new ArgumentOutOfRangeException(fieldName);
+            }
+
             //TODO: check why we are using TaskScheduler.Current and not Default (might cause a thread issue)
             _ = resolveAsync().ContinueWith(task => { fieldInfo.SetValue(src, task.Result); propertyChanged?.Invoke(propertyName!); }, TaskScheduler.Current);
         }
+
         return targetField;
     }
 }
