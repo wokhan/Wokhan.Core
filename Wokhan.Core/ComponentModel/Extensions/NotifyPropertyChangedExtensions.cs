@@ -52,33 +52,6 @@ public static class NotifyPropertyChangedExtensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="src"></param>
-    /// <param name="resolve"></param>
-    /// <param name="targetField"></param>
-    /// <param name="propertyChanged"></param>
-    /// <param name="fieldName">For internal use (for reflection, based on the 'targetField' parameter)</param>
-    /// <param name="propertyName">For internal use (for reflection, based on the 'targetField' parameter)</param>
-    /// <returns></returns>
-    public static T? GetOrSetValueAsync<T>(this INotifyPropertyChanged src, Func<T> resolve, ref T targetField, Action<string>? propertyChanged = null, [CallerArgumentExpression(nameof(targetField))] string? fieldName = null, [CallerMemberName] string? propertyName = null)
-    {
-        // TODO: not sure about that. Wrapping the resolver in a task wrapper in a function only to have it run async looks a bit too much.
-        return GetOrSetValueAsync(src, () => Task.Run(() => resolve()), ref targetField, propertyChanged, propertyName);
-    }
-
-    /// <summary>
-    /// Asynchronously retrieves a value and updates a backing field, calling the PropertyChanged handler when done.
-    /// Allows to use lazy loading for costly operations in accessors, as follows:
-    /// <code>
-    /// private ImageSource? image;
-    /// public ImageSource? Image 
-    /// {
-    ///     get => this.GetOrSetValueAsync(() => myAsyncMethod(), ref image, OnPropertyChanged);
-    ///     set => image = value; // Optional (and usually useless since the value is set when the getter gets called for the first time)
-    /// }
-    /// </code>
-    /// Note: if the getter is called multiple times while the computed value is null, the async callback will be called again. You should handle this to avoid this behavior.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="src"></param>
     /// <param name="resolveAsync">Async factory to resolve the value</param>
     /// <param name="targetField"></param>
     /// <param name="propertyChanged"></param>
