@@ -1,7 +1,7 @@
 # GroupedObservableCollection&lt;TK,T&gt;.RaisePropertyChanged method
 
 ```csharp
-public void RaisePropertyChanged([CallerMemberName] string prop = null)
+public void RaisePropertyChanged([CallerMemberName] string? prop = null)
 ```
 
 ## See Also

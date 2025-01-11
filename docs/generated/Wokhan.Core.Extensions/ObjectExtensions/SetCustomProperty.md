@@ -3,7 +3,7 @@
 WARNING: PROTOTYPE. Do not use until this notice is removed since memory impact has not been verified yet. Stores a custom property attached to the source object The dictionary storing data will be garbage collected once the object is not used anymore, preventing memory leaks
 
 ```csharp
-public static void SetCustomProperty<T>(this object src, string key, T value)
+public static void SetCustomProperty<T>(this object src, string key, T? value)
 ```
 
 | parameter | description |
